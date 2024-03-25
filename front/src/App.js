@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar.jsx";
 import { useState, useEffect } from "react";
 import BottomBar from "./components/BottomBar.jsx";
 import Search from "./components/Search.jsx";
+import Login from "./components/Login.jsx"; 
 import Lists from "./components/Lists.jsx";
 import WatchingPage from "./components/WatchingPage.jsx";
 import Profile from "./components/Profile.jsx";
@@ -52,6 +53,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/search" element={<Search  />} />
         <Route exact path="/watchlist" element={<Lists list_type={"Watch Later"} auth={auth} />} />
         <Route exact path="/favorites" element={<Lists list_type={"Favorites"} auth={auth} />} />

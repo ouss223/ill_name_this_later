@@ -35,7 +35,8 @@ const FieldChange = ({ fieldName, setAppear, auth }) => {
           }
         );
         const data = await response.json();
-        updateAvatarId(field[0]);
+        if(fieldName==="avatar")updateAvatarId(field[0]);
+        
         console.log(data);
         setAppear(false);
       } catch (e) {

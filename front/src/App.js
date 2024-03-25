@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Dashboard from "./components/Dashboard.jsx";
-import NavBar from "./components/NavBar.jsx";
 import { useState, useEffect } from "react";
 import BottomBar from "./components/BottomBar.jsx";
 import Search from "./components/Search.jsx";
@@ -34,7 +33,7 @@ function App() {
         );
         const data = await response.json();
         updateAvatarId(data.avatar);
-        console.log(data);
+        console.log(data); 
       } catch (e) {
         console.log(e);
       }

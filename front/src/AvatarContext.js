@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from 'react';
 const AvatarContext = createContext();
 
 export const AvatarProvider = ({ children }) => {
-  const [avatarId, setAvatarId] = useState(1);
+  const [avatarId, setAvatarId] = useState(null);
 
   const updateAvatarId = (newAvatarId) => {
     setAvatarId(newAvatarId);

@@ -11,6 +11,9 @@ import WatchingPage from "./components/WatchingPage.jsx";
 import Profile from "./components/Profile.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {  useAvatar } from './AvatarContext';
+import LandingPage from "./components/LandingPage.jsx";
+import Signup from "./components/Signup.jsx";
+
 
 // Wrap your routes inside the Router component
 //handle the wait for stuff to load
@@ -53,7 +56,9 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/landing" element={<LandingPage />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/search" element={<Search  />} />
         <Route exact path="/watchlist" element={<Lists list_type={"Watch Later"} auth={auth} />} />
         <Route exact path="/favorites" element={<Lists list_type={"Favorites"} auth={auth} />} />

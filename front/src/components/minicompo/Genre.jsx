@@ -4,7 +4,7 @@ const Genre = ({genre,shows}) => {
 
     return (
         <div className='flex flex-col w-11/12 mb-16'>
-            <h1 className='text-3xl mb-5 font-bold text-purple-500'>
+            <h1 className='text-3xl mb-5 font-bold text-glowy-pink'>
                 {genre}
             </h1>
             <Slider shows={shows}/>

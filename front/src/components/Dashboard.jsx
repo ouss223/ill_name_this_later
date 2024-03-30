@@ -38,17 +38,10 @@ const Dashboard = () => {
     }
   }, []);
 
- 
-  const content = (
-    <div className="flex gap-10">
-      <h1>Movies</h1>
-      <h1>Series</h1>
-    </div>
-  );
+
 
   return (
-    <div>
-    <NavBar child={content} type={1}/>
+    <div className="">
     <div className="bg-black h-full text-white lg:pl-24 pl-10 pb-12">
       <div className="flex">
         <div className="w-1/2  ">
@@ -63,10 +56,10 @@ const Dashboard = () => {
           </div>
           <h1>{results.Plot}</h1>
           <div className="space-x-10 mt-8">
-            <button className="bg-purple-500 rounded-lg p-2 font-bold">
+            <button className="bg-glowy-pink rounded-lg p-2 font-bold">
               Play Now
             </button>
-            <button>Save for later</button>
+            <button className="text-gray-400">Save for later</button>
           </div>
         </div>
         <div className="lg:w-[200px] w-0"></div>
@@ -81,11 +74,11 @@ const Dashboard = () => {
         ></div>
       </div>
       <div className="mt-10 flex flex-col w-11/12  justify-center  ">
-        <h1 className="text-purple-500 font-bold text-xl mb-5">Recommended</h1>
+        <h1 className="text-glowy-pink font-bold text-xl mb-5">Recommended</h1>
         <Slider shows={shows} />
       </div>
       <div className="mt-10 flex flex-col w-11/12  justify-center  ">
-        <h1 className="text-purple-500 font-bold text-xl mb-5">Recommended</h1>
+        <h1 className="text-glowy-pink font-bold text-xl mb-5">Recommended</h1>
         <Slider shows={shows} />
       </div>
     </div>

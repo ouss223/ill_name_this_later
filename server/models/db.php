@@ -73,6 +73,8 @@ $query5 = "CREATE TABLE IF NOT EXISTS blog_post (
     title VARCHAR(50) NOT NULL,
     content VARCHAR(10000) NOT NULL,
     admin_id INT NOT NULL,
+    image VARCHAR(250) NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (admin_id) REFERENCES admin(id)
 )";
 
@@ -80,6 +82,9 @@ $query6 = "CREATE TABLE IF NOT EXISTS comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     content VARCHAR(10000) NOT NULL,
     user_id INT NOT NULL,
+    episode INTEGER DEFAULT 1,
+    season INTEGER DEFAULT 1,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     show_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )";
@@ -93,7 +98,6 @@ $myDB->executeQuery($query3);
 $myDB->executeQuery($query4);
 $myDB->executeQuery($query5);
 $myDB->executeQuery($query6);
-
 
 
 

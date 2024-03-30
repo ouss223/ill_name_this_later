@@ -16,7 +16,12 @@ global $myDB;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/postblogpost.php") {
     $body = json_decode(file_get_contents("php://input"), true);
-    if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || !isset($body["title"]) || !isset($body["content"]))  {
+    if (!isset($body["title"])) {
+        http_response_code(400);
+        echo json_encode(array("error" => "yeah haha"));
+        exit;
+    }
+    if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || !isset($body["title"]) || !isset($body["content"]) || !isset($body["image"]) )  {
         http_response_code(400);
         echo json_encode(array("error" => "Missing parameters"));
         exit;
@@ -25,11 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/pos
     $title = $body["title"];
     $content = $body["content"];
 
+    $image = $body['image'];
+
     $admin_id = verifyToken(tokenExtractor($auth));   
     
     if ($admin_id!== false) {
-    
-        $success = PostBlogPost($title,$content,$admin_id);
+        $imagePath = uploadImage($image);
+        if($imagePath===false)
+        {
+            http_response_code(500);
+            echo json_encode(array("error" => "Failed to upload image"));
+            exit;
+        }
+        $success = PostBlogPost($title,$content,$admin_id,$imagePath);
        if($success){
         http_response_code(200);
         echo json_encode(array("success" => "Blog post created"));

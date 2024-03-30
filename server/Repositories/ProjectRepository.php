@@ -62,15 +62,19 @@
         }
         return $watchlist;
     }
-    function PostBlogPost($title,$content,$admin_id)
-    {
-        global $myDB;
-        $query = "INSERT INTO blog_post (title, content,admin_id) VALUES (?, ?, ?)";
-        $stmt = $myDB->prepare($query);
-        $stmt->bind_param("ssi", $title, $content, $admin_id);
-        $success = $stmt->execute();
-        return $success;
-    }
+    function PostBlogPost($title, $content, $admin_id, $imagePath)
+{
+    global $myDB;
+    $query = "INSERT INTO blog_post (title, content, admin_id, image) VALUES (?, ?, ?, ?)";
+    $stmt = $myDB->prepare($query);
+    
+    $stmt->bind_param("ssis", $title, $content, $admin_id, $imagePath);
+    
+    $success = $stmt->execute();
+    
+    return $success;
+}
+
     function    removeFavorite($show_name,$user_id)
     {
         global $myDB;
@@ -109,36 +113,43 @@
         $result = $stmt->get_result();
         return $result->num_rows > 0;
     }
-    function    addComment($show_id,$comment,$user_id)
-    {
-        global $myDB;
-        $query = "INSERT INTO comments (show_id, content, user_id) VALUES (?, ?, ?)";
-        $stmt = $myDB->prepare($query);
-        $stmt->bind_param("isi", $show_id, $comment, $user_id);
-        $success = $stmt->execute();
-        return $success;
-    }
-    function getComments($show_id,$user_id)
-    {
-        global $myDB;
-        $query = "SELECT content,user_id FROM comments WHERE show_id = ? ";
-        $stmt = $myDB->prepare($query);
-        $stmt->bind_param("i", $show_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        //if its the user's comment add in head else add in tail , and include the entire row not only comment in array
-        $comments = array();
-        while ($row = $result->fetch_assoc()) {
-            if($row['user_id'] == $user_id){
-                array_unshift($comments,$row);
-            }
-            else{
-                $comments[] = $row;
-            }
-        }
-        return $comments;
+    function addComment($show_id, $comment, $user_id, $episode, $season)
+{
+    global $myDB;
+    $query = "INSERT INTO comments (show_id, content, user_id, episode, season) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $myDB->prepare($query);
+    $stmt->bind_param("ssiii", $show_id, $comment, $user_id, $episode, $season);
+    $success = $stmt->execute();
+    return $success;
+}
 
+function getComments($show_id, $user_id, $episode, $season)
+{
+    global $myDB;
+    $query = "SELECT c.user_id, c.id, c.content, c.timestamp, u.username 
+              FROM comments c
+              LEFT JOIN users u ON c.user_id = u.id
+              WHERE c.show_id = ? AND c.episode = ? AND c.season = ?";
+    $stmt = $myDB->prepare($query);
+    $stmt->bind_param("sii", $show_id, $episode, $season);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    // if it's the user's comment, add at the beginning; otherwise, add at the end
+    $comments = array();
+    while ($row = $result->fetch_assoc()) {
+        $row['own'] = ($row['user_id'] == $user_id) ? true : false;
+
+        if ($row['own']) {
+            array_unshift($comments, $row);
+        } else {
+            $comments[] = $row;
+        }
     }
+    return $comments;
+}
+
+
     function deleteComment($comment_id,$user_id)
     {
         global $myDB;
@@ -151,12 +162,35 @@
     function modifyComment($comment_id,$new_comment,$user_id)
     {
         global $myDB;
-        $query = "UPDATE comments SET content = ? WHERE id = ? AND user_id = ?";
+        $query = "UPDATE comments SET content = ? WHERE id = ? ";
         $stmt = $myDB->prepare($query);
-        $stmt->bind_param("sii", $new_comment, $comment_id, $user_id);
+        $stmt->bind_param("si", $new_comment, $comment_id);
         $success = $stmt->execute();
         return $success;
     }
+    function uploadImage($imageBase64)
+{
+    $targetDir = "/Users/ous223/Documents/projet sellaouti/front/public/storage/";
+
+    $imageData = base64_decode($imageBase64);
+
+    $uniqueFilename = uniqid() . '.png';
+
+    $targetFile = $targetDir . $uniqueFilename;
+
+    if (file_put_contents($targetFile, $imageData) !== false) {
+        $relativePath = '/storage/' . $uniqueFilename;
+        return $relativePath;
+    } else {
+        return false;
+    }
+}
+
+    
+
+    
+
+
 
 
 ?>

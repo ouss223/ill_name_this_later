@@ -14,7 +14,7 @@ global $myDB;
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/modifyComment.php") {
     $body = json_decode(file_get_contents("php://input"), true);
 
-    if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || !isset($body["show_id"])  || !isset($body["comment_id"] || !isset($body["operation"]) || !isset($body["new_comment"]) ) ) {
+    if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || !isset($body["show_id"])  || !isset($body["comment_id"]) || !isset($body["operation"]) || !isset($body["new_comment"]) )  {
         http_response_code(400);
         echo json_encode(array("error" => "Missing authentication token"));
         exit;
@@ -35,8 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/mod
         }
         else if($operation=="edit")
         {
-            $comment = $body["comment"];
-            $success = editComment($comment_id,$new_comment,$user_id);
+            $success = modifyComment($comment_id,$new_comment,$user_id);
         }
         else{
             http_response_code(400);

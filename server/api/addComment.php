@@ -13,18 +13,21 @@ global $myDB;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/addComment.php") {
     $body = json_decode(file_get_contents("php://input"), true);
-    if (!isset($body["show_id"]) || !isset($body["comment"]) || !isset($_SERVER['HTTP_AUTHORIZATION']) ) {
+    if (!isset($body["show_id"]) || !isset($body["comment"]) || !isset($_SERVER['HTTP_AUTHORIZATION']) || !isset($body["episode"]) || !isset($body["season"]) ) {
         http_response_code(400);
         echo json_encode(array("error" => "Missing parameters"));
         exit;
     }
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
-    $show_name = $body["show_name"];
+    $show_id = $body["show_id"];
     $comment = $body["comment"];
+
+    $episode = $body["episode"];
+    $season = $body["season"];
 
     $user_id = verifyToken(tokenExtractor($auth));   
     if($user_id !== false){
-        $success = addComment($show_id, $comment, $user_id);
+        $success = addComment($show_id, $comment, $user_id, $episode, $season);
         if(!$success){
             http_response_code(500);
             echo json_encode(array("error" => "An error occurred while adding favorite"));

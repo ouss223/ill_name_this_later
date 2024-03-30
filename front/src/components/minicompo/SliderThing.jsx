@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+
 const SliderThing = ({ shows }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
@@ -72,7 +74,7 @@ const SliderThing = ({ shows }) => {
   {!cond ? (
           <Slider {...sliderSettings}>
             {shows.map((show, index) => (
-              <div key={index+show.imdbID} className="flex flex-col  cursor-pointer" 
+              <div key={index+show.imdbID} className="flex relative flex-col  cursor-pointer group" 
               onClick={()=>
                 {
                   navigate(`/watch/${show.Type}/${show.imdbID}`)
@@ -80,11 +82,14 @@ const SliderThing = ({ shows }) => {
                 <img
                   src={show.Poster}
                   alt="show"
-                  className="w-[200px] h-[300px] rounded-md"
+                  className="w-[200px] h-[300px] rounded-md hover:opacity-40"
                 />
-                <h1 className="text-white text-start w-[200px] text-lg font-bold ">
+                <h1 className="text-white absolute px-2 bottom-5 text-start w-[200px] text-lg space-y-4 font-bold  group-hover:visible invisible z-50">
                   {show.Title}
+                  <PlayCircleIcon style={{ color: 'orange' }} />
+
                 </h1>
+               
               </div>
             ))}
           </Slider>

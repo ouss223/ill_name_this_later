@@ -8,6 +8,7 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import Comments from "./minicompo/Comments.jsx";
 const WatchingPage = ({ auth }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { id, type } = useParams();
@@ -21,12 +22,7 @@ const WatchingPage = ({ auth }) => {
   const favoritesRef = useRef(null);
   const [adder, setAdder] = useState([false, false]);
   const [remover, setRemover] = useState([false, false]);
-  const content = (
-    <div className="flex  ">
-      <h1 className="invisible">movies</h1>
-      <h1 className="invisible">series</h1>
-    </div>
-  );
+
   useEffect(() => {
     async function checking() {
       setAdder([false, false]);
@@ -44,18 +40,17 @@ const WatchingPage = ({ auth }) => {
           .then((response) => response.json())
           .then((data) => {
             setlists([data.in_watchlist, data.in_favorites]);
-
-
           });
       } catch (e) {
         console.log(e);
       }
     }
     checking();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function getInfo() {
+      setInfo(null);
       try {
         fetch(`http://www.omdbapi.com/?apikey=4a8e82cc&i=${id}`)
           .then((response) => response.json())
@@ -68,7 +63,7 @@ const WatchingPage = ({ auth }) => {
       }
     }
     getInfo();
-  }, []);
+  }, [id]);
   useEffect(() => {
     async function getSeason() {
       if (type === "movie") return;
@@ -165,8 +160,6 @@ const WatchingPage = ({ auth }) => {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-
-
           });
       } catch (e) {
         console.log(e);
@@ -185,104 +178,111 @@ const WatchingPage = ({ auth }) => {
   }, [remover]);
 
   return (
-    <div className="mb-20 ">
-      <NavBar child={content} type={1} />
-      <div className="pt-20 flex flex-col justify-center items-center gap-4">
-        <iframe
-          sandbox="allow-same-origin allow-scripts"
-          className="border-2 rounded-lg border-gray-800  md:w-3/4 w-full lg:h-[600px] md:h-[400px] sm:h-[300px] h-[300px] max-w-[1000px] max-h-[600px]"
-          src={
-            type === "series"
-              ? `${vidSrc_serie}${id}/${picked[0]}/${picked[1]}`
-              : `${vidSrc_movie}${id}`
-          }
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
-        <div className="flex gap-2 text-gray-200 text-[14px]">
-          <div
-            className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
-            onClick={() => {
-              if (lists[0]) {
-                setRemover((prev) => [true, prev[1]]);
-              } else {
-                setAdder((prev) => [true, prev[1]]);
-              }
-              setlists((prev)=>[!prev[0], lists[1]]);
-            }}
-          >
-            Add Watch Later
-            <Checkbox
-              checked={lists[0]}
-              ref={watchLaterRef}
-              id="watchLater"
-              {...label}
-              icon={<BookmarkBorderIcon />}
-              checkedIcon={<BookmarkIcon />}
-            />
-          </div>
-          <div
-            className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
-            onClick={() => {
-              if (lists[1]) {
-                setRemover((prev) => [prev[1], true]);
-              } else {
-                setAdder((prev) => [prev[1], true]);
-              }
-              setlists((prev)=>[prev[0], !lists[1]]);
-            }}
-          >
-            Add Favorites
-            <Checkbox
-              checked={lists[1]}
-              ref={favoritesRef}
-              id="favorites"
-              {...label}
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-            />
-          </div>
-        </div>
-      </div>
-      {type == "series" && (
-        <div className="flex flex-col mt-5 w-full max-w-[700px] mx-auto  bg-slate-900 text-white">
-          <div className="bg-gray-800 flex flex-row justify-center items-center">
-            <select
-              style={{ appearance: "none", outline: "none" }}
-              className=" p-2  bg-gray-800 text-white rounded-md cursor-pointer"
-              name=""
-              id=""
-              onChange={(e) => {
-                const selectedSeason = parseInt(e.target.value);
-                setPicked((prev) => [selectedSeason, prev[1]]);
+    <div className="mb-20  ">
+      {info && (
+        <h1 className="text-white  ml-10 mb-10 text-4xl text-glowy-pink font-semibold">
+          {info.Title}
+        </h1>
+      )}
+      <div className="flex flex-row mb-32 px-10 gap-5 ">
+        <div className="w-4/6  flex flex-col justify-center items-center gap-4 ">
+          <iframe
+            sandbox="allow-same-origin allow-scripts"
+            className="border-2 rounded-lg border-gray-800 w-full h-[500px]"
+            src={
+              type === "series"
+                ? `${vidSrc_serie}${id}/${picked[0]}/${picked[1]}`
+                : `${vidSrc_movie}${id}`
+            }
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+          <div className="flex gap-2 text-gray-200 text-[14px]">
+            <div
+              className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              onClick={() => {
+                if (lists[0]) {
+                  setRemover((prev) => [true, prev[1]]);
+                } else {
+                  setAdder((prev) => [true, prev[1]]);
+                }
+                setlists((prev) => [!prev[0], lists[1]]);
               }}
             >
-              {info &&
-                info.totalSeasons &&
-                Array.from({ length: info.totalSeasons }, (_, index) => (
-                  <option key={index} value={index + 1}>
-                    Season {index + 1}
-                  </option>
-                ))}
-            </select>
-            <img src={down} alt="down" className="h-3" />
-          </div>
-
-          <div>
-            {currentSeason &&
-              currentSeason.Episodes.map((episode, index) => (
-                <div key={index} className="flex justify-between px-5 py-3">
-                  <h1
-                    className=" cursor-pointer"
-                    onClick={() => setPicked((prev) => [prev[0], index + 1])}
-                  >
-                    Episode {index + 1} : {episode.Title}
-                  </h1>
-                </div>
-              ))}
+              Add Watch Later
+              <Checkbox
+                checked={lists[0]}
+                ref={watchLaterRef}
+                id="watchLater"
+                {...label}
+                icon={<BookmarkBorderIcon />}
+                checkedIcon={<BookmarkIcon />}
+              />
+            </div>
+            <div
+              className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              onClick={() => {
+                if (lists[1]) {
+                  setRemover((prev) => [prev[1], true]);
+                } else {
+                  setAdder((prev) => [prev[1], true]);
+                }
+                setlists((prev) => [prev[0], !lists[1]]);
+              }}
+            >
+              Add Favorites
+              <Checkbox
+                checked={lists[1]}
+                ref={favoritesRef}
+                id="favorites"
+                {...label}
+                icon={<FavoriteBorder />}
+                checkedIcon={<Favorite />}
+              />
+            </div>
           </div>
         </div>
-      )}
+        {type === "series" && (
+          <div className="flex flex-col w-2/6 h-[500px] max-w-[700px] mx-auto bg-glowy-pink text-white">
+            <div className="bg-purple-900 flex flex-row justify-center items-center">
+              <select
+                style={{ appearance: "none", outline: "none" }}
+                className="p-2 bg-purple-900 text-white rounded-md cursor-pointer"
+                name=""
+                id=""
+                onChange={(e) => {
+                  const selectedSeason = parseInt(e.target.value);
+                  setPicked((prev) => [selectedSeason, prev[1]]);
+                }}
+              >
+                {info &&
+                  info.totalSeasons &&
+                  Array.from({ length: info.totalSeasons }, (_, index) => (
+                    <option key={index} value={index + 1}>
+                      Season {index + 1}
+                    </option>
+                  ))}
+              </select>
+              <img src={down} alt="down" className="h-3" />
+            </div>
+
+            <div className="overflow-y-auto font-semibold text-[17px]">
+              {currentSeason &&
+                currentSeason.Episodes.map((episode, index) => (
+                  <div key={index} className="flex justify-between px-5 py-3">
+                    <h1
+                      className="cursor-pointer "
+                      onClick={() => setPicked((prev) => [prev[0], index + 1])}
+                    >
+                      Episode {index + 1} : {episode.Title}
+                    </h1>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+      </div>
+      <Comments auth={auth} id={id} season={picked[0]} episode={picked[1]} />
     </div>
   );
 };

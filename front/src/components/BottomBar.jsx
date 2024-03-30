@@ -23,15 +23,7 @@ const BottomBar = ({ choice, setChoice }) => {
           navigate("/");
         }}
       />
-      <img
-        src={choice === 2 ? search_purple : search_gray}
-        alt=""
-        className="h-7 cursor-pointer hover:scale-125 duration-200 transition-all"
-        onClick={() => {
-          setChoice(2);
-          navigate("/search");
-        }}
-      />
+      
       <img
         src={choice === 3 ? bookmark_purple : bookmark_gray}
         alt=""

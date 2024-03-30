@@ -15,7 +15,7 @@
     {
         global $myDB;
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users (username, password, email) VALUES ('$username', '$password_hash', '$email')";
+        $query = "INSERT INTO users (username, password, email) VALUES ('$username', '$hash', '$email')";
         $myDB->executeQuery($query);
         $query = "SELECT id FROM users WHERE email = '$email'";
         $result = $myDB->executeQuery($query);

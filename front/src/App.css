@@ -39,3 +39,26 @@
 body {
   background-color: black;
 }
+
+.bg-glowy-pink{
+  background-color: #FB2576;
+}
+.bg-dark-pink
+{
+  background-color: #FB257680;
+}
+.text-glowy-pink
+{
+  color: #FB2576;
+}
+.text-dark-pink
+{
+  color: #FB257680;
+}
+.border-glowy-pink{
+  border-color: #FB2576;
+}
+.border-dark-pink
+{
+  border-color: #FB257680;
+}

@@ -21,13 +21,13 @@
         $result = $myDB->executeQuery($query);
         $row = $result->fetch_assoc();
         $userId = $row['id'];
-        $authToken = generateToken();
+        $authToken = generateToken($userId);
 
         return $authToken;
     }
     function selectUserByEmail($email){
         global $myDB;
-        $query = "SELECT id, password FROM users WHERE email = ?";
+        $query = "SELECT id, password,role FROM users WHERE email = ?";
         $stmt = $myDB->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();

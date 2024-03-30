@@ -45,6 +45,7 @@ $query1 = "CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
+    role ENUM('admin', 'watcher') DEFAULT 'watcher',
     avatar VARCHAR(50) NOT NULL DEFAULT '1',
     email VARCHAR(50) NOT NULL
 )";
@@ -88,7 +89,6 @@ $query6 = "CREATE TABLE IF NOT EXISTS comments (
     show_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )";
-
 
 
 

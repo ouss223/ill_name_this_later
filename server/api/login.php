@@ -30,7 +30,7 @@ if ($result->num_rows == 1) {
     if (password_verify($password, $hashedPasswordFromDatabase)) {
         $authToken = generateToken($row['id']);
         if (isset($authToken)){
-            echo json_encode(array("auth" => "Bearer " . $authToken, "message" => "User logged in successfully"));
+            echo json_encode(array("auth" => "Bearer " . $authToken, "message" => "User logged in successfully","role"=>$row['role']));
         } else {
             http_response_code(500);
             echo json_encode(array("error" => "An error occurred while storing authentication token"));

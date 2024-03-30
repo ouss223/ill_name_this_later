@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+
+.abel {
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.alegreya-normal {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.alegreya-bold {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+
 .App {
   text-align: center;
 }
@@ -61,4 +81,18 @@ body {
 .border-dark-pink
 {
   border-color: #FB257680;
+}
+
+
+.example-style {
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
 }

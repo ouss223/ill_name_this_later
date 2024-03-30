@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useAvatar } from "../AvatarContext";
 import logo from "../assets/logo_dark.png";
 import { useState } from "react";
-const NavBar = ({ child, username }) => {
+import Cookies from "js-cookie";
+const NavBar = ({ child, username,setAuth }) => {
   const navigate = useNavigate();
   const { avatarId, updateAvatarId } = useAvatar();
   const [appear, setAppear] = useState(false);
-  console.log(username);
+  console.log(username,"in navbar");
   console.log(avatarId);
   const urls = [
     "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/8-Employee-512.png",
@@ -43,7 +44,7 @@ const NavBar = ({ child, username }) => {
         <h1 className="border-l border-dark-pink pl-3 text-white">
           {username}
           {appear && (
-            <div className="absolute bg-black z-50 mt-4 rounded-lg px-2 mx-auto flex flex-col">
+            <div className="absolute bg-black z-50 mt-4 rounded-lg px-2 mx-auto flex flex-col right-2">
               <button
                 className="border-b border-glowy-pink text-2xl p-2"
                 onClick={() => {
@@ -74,7 +75,11 @@ const NavBar = ({ child, username }) => {
               >
                 Settings
               </button>
-              <button className="text-2xl p-2">Log out</button>
+              <button onClick={()=>
+              {
+                Cookies.remove('auth');
+                setAuth(null);
+              }} className="text-2xl p-2">Log out</button>
             </div>
           )}
         </h1>

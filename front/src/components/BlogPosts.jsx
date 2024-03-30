@@ -27,7 +27,7 @@ const BlogPosts = ({ auth }) => {
   }, []);
 
   return (
-    <div className="text-white max-w-[1300px] mx-auto">
+    <div className="text-white max-w-[1300px] mx-auto ">
         <h1 className="text-5xl ml-12 mb-12">Blog Posts</h1>
         <div className="flex flex-col  mx-12 ">
         {

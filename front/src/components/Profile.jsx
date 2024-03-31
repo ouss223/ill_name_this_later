@@ -99,42 +99,42 @@ const Profile = ({ auth }) => {
           <img src={pen} className="h-10 absolute right-0 top-20 " alt="pen" />
         </div>
 
-        <h1 className="text-4xl font-semibold text-glowy-pink">{userInfos?.username}</h1>
-        <h2 className="text-xl text-dark-pink">{userInfos?.email}</h2>
+        <h1 className="alegreya-bold text-[60px] text-glowy-pink">{userInfos?.username}</h1>
+        <h2 className="alegreya-normal text-[30px] text-dark-pink">{userInfos?.email}</h2>
       </div>
       <div className="w-full sm:w-3/4 flex flex-col  bg-blackrounded-lg  pl-10 py-8 gap-8 text-xl  max-w-[650px] ">
         <div
-          className="cursor-pointer flex items-center justify-between gap-10 w-full text-4xl font-semibold"
+          className="alegreya-bold cursor-pointer flex items-center justify-between gap-10 w-full text-[40px]"
           onClick={() => {
             setFieldName("password");
             setAppear(true);
           }}
         >
-          <h1>change Password</h1> 
+          <h1>change Password</h1>
           <img src={right_arrow} alt="arrow" />
         </div>
         <div
-          className="cursor-pointer flex items-center justify-between gap-10 w-full text-4xl font-semibold"
+          className="alegreya-bold cursor-pointer flex items-center justify-between gap-10 w-full text-[40px]"
           onClick={() => {
             setFieldName("email");
             setAppear(true);
           }}
         >
-          <h1>change Email</h1> 
+          <h1>change Email</h1>
           <img src={right_arrow} alt="arrow" />
         </div>
         <div
-          className="cursor-pointer flex items-center justify-between gap-10 w-full text-4xl font-semibold"
-          //functionality not yet implemented
+          className="alegreya-bold cursor-pointer flex items-center justify-between gap-10 w-full text-[40px]"
+        //functionality not yet implemented
         >
-          <h1>change Username</h1> 
+          <h1>change Username</h1>
           <img src={right_arrow} alt="arrow" />
         </div>
       </div>
       {appear && (
         <FieldChange fieldName={fieldName} setAppear={setAppear} auth={auth} />
       )}
-      
+
     </div>
   );
 };

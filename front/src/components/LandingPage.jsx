@@ -18,7 +18,7 @@ const LandingPage = () => {
   return (
     <div className="bg-white w-full p-0 m-0">
       <nav
-        class="relative flex w-full flex-wrap items-center justify-between bg-gray-600 py-0 shadow-dark-mild  lg:py-2"
+        class="alegreya-normal relative flex w-full flex-wrap items-center justify-between bg-gray-600 py-0 shadow-dark-mild  lg:py-2"
         data-twe-navbar-ref
       >
         <div class="flex w-full flex-wrap items-center justify-between px-3">
@@ -121,11 +121,11 @@ const LandingPage = () => {
             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjBmYjhyaTJ4c2NhanVlcDAxZ3YwdDRmaXkwem5rZGV5bDJ5ZzJieCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JTDOXYOBSo26aPjlhN/giphy.gif"
             alt="coverImg"
           />
-          
+
           <figcaption className="absolute bottom-0 left-2/4 flex w-full h-64 -translate-x-1/2 justify-between border-black-30 bg-black/30 py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm">
             <div className="flex w-full">
               <div className="w-3/5  container mx-auto flex flex-col font-medium text-[35px] pl-12 text-white">
-                <h3 className="text-left mt-8 ">
+                <h3 className="alegreya-normal text-left mt-8 ">
                   <big>S</big>TREAM THE LATEST BLOCKBASTERS
                 </h3>
                 <h3 className="text-left p-0 m-0  mb-8">
@@ -134,11 +134,11 @@ const LandingPage = () => {
               </div>
               <div className="w-2/5 ">
                 <div class="container mx-auto flex flex-col text-[20px]  text-white ">
-                  <h3 class="text-left mt-8 mb-8">
+                  <h3 class="abel text-left mt-8 mb-8">
                     <big>E</big>xperience the best in movies, sign up or login
                     to start
                   </h3>
-                  <div class="flex justify-left">
+                  <div class="alegreya-normal flex justify-left">
                     <a
                       href="#"
                       onClick={() => navigate("/login")}
@@ -172,11 +172,11 @@ const LandingPage = () => {
             <div className="m-0 p-0">
               <img src={mediaPlayer} alt="media player" />
             </div>
-            <h1 className="font-medium text-violet-950 text-[36px] mt-12 mb-12">
+            <h1 className="alegreya-normal font-medium text-violet-950 text-[50px] mt-12 mb-12">
               <big>D</big>ISCOVER THE BEST OF THE ENTERTAINMENT WITH RAKCHA'S
               IMMENSE LIBARY
             </h1>
-            <p className="text-[30px] mt-4">
+            <p className="abel text-[25px] mt-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
               ea, facere sunt harum quasi nihil magni rerum! Qui, aliquid
               debitis animi iure, sit iusto nobis et totam atque deleniti
@@ -195,28 +195,28 @@ const LandingPage = () => {
       <section ref={WatchNow}>
         <div className="flex w-full mt-20 mb-20 pl-[5rem] pr-[5rem]">
           <div className="w-2/3 justify-left p-4">
-            <h1 className="font-medium text-violet-950 text-[32px] mt-12 mb-12">
+            <h1 className="alegreya-normal font-medium text-violet-950 text-[50px] mt-12 mb-12">
               <big>S</big>TREAM ANYWHERE, ANYTIME
             </h1>
-            <p className="text-[22px] mt-4">
+            <p className="abel text-[25px] mt-4">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
               voluptates modi hic error velit quibusdam, recusandae
               reprehenderit! Voluptatem animi aperiam magni quibusdam ratione,
               ab suscipit exercitationem impedit, modi similique deserunt?
             </p>
-            <h1 className="font-medium text-violet-950 text-[30px] mt-12 mb-12">
+            <h1 className="alegreya-normal font-medium text-violet-950 text-[50px] mt-12 mb-12">
               <big>P</big>ARENTAL CONTROL INCLUDED
             </h1>
-            <p className="text-[22px] mt-4">
+            <p className="abel text-[25px] mt-4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui eius
               praesentium quis ullam, ab sit, iure suscipit numquam soluta
               aliquid animi consequuntur debitis iste eos quidem aut excepturi
               saepe obcaecati!
             </p>
-            <h1 className="font-medium text-violet-950 text-[30px] mt-12 mb-12">
+            <h1 className="alegreya-normal font-medium text-violet-950 text-[50px] mt-12 mb-12">
               <big>U</big>NINTERRUPTED STREAMING SERVICE
             </h1>
-            <p className="text-[22px] mt-4">
+            <p className="abel text-[25px] mt-4">
               tempus, dui ex lacinia nunc, sit amet ultricies odio risus ac
               nunc. Nullam consectetur, nunc eget sit amet ultricies odio
             </p>
@@ -227,7 +227,6 @@ const LandingPage = () => {
               src={oppenheimer}
               alt="film2"
             />
-            className="object-cover object-center w-full h-full m-10"
           </div>
         </div>
       </section>
@@ -238,12 +237,12 @@ const LandingPage = () => {
           alt="film2"
         />
         <figcaption className="absolute bottom-0 left-2/4 flex w-full h-[550px] -translate-x-1/2 justify-between border-black-100 bg-black/60 py-4 px-6 shadow-sm shadow-black/100 saturate-100 ">
-          <div className="container mx-auto flex flex-col font-medium text-[35px] pl-12 mt-20 text-white justify-left ">
-            <h3 className="text-left text-[65px]">
+          <div className="container mx-auto flex flex-col font-medium pl-8 mt-16 text-white justify-left ">
+            <h3 className="alegreya-normal text-left text-[80px]">
               <big>S</big>TREAM THE LATEST MOVIES NOW
             </h3>
             <p
-              className="text-left text-[25px] m-4"
+              className="abel text-left text-[25px] m-4"
               style={{
                 color: "white",
                 WebkitTextFillColor: "white",
@@ -269,20 +268,19 @@ const LandingPage = () => {
         <div className="flex justify-center my-8">
           <img src={logo} alt="logo" class="" />
         </div>
-        <div className="flex justify-center my-8 text-[20px] text-bold">
+        <div className="alegreya-normal flex justify-center my-8 text-[50px] ">
           <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            in molestiae voluptates eum
+            “ Rakcha rat7nti mn ads li fi egybest ”
           </h1>
         </div>
         <div className="flex justify-center ">
           <div className="justify-center">
             <img src={usr} alt="user" className="w-[120px] mx-auto " />
             <div className="text-center">
-              <h3 className=" m-0 text-[28px] font-semibold ">
+              <h3 className="alegreya-normal m-0 text-[30px] ">
                 <big>R</big>OUAHI GHAITH
               </h3>
-              <h3 className=" m-0 text-[25px] text-normal">
+              <h3 className="abel m-0 text-[25px] text-normal">
                 <big>S</big>UPER FAN
               </h3>
             </div>
@@ -291,8 +289,8 @@ const LandingPage = () => {
       </div>
       <div class="container my-10 mx-auto">
         <div className="pl-8">
-          <h1 className="font-bold text-[50px] uppercase">FAQ</h1>
-          <h1 className="text-[25px] py-8 ">
+          <h1 className="alegreya-bold text-[50px] uppercase">FAQ</h1>
+          <h1 className="abel text-[25px] py-8 ">
             <a href="#" className="hover:underline">
               <big>F</big>ind Answers to some of your questions here..
             </a>
@@ -302,10 +300,10 @@ const LandingPage = () => {
         <hr class="border-2 border-purple-800 " />
 
         <div className="pl-8">
-          <h1 className="font-normal text-[50px] uppercase">
+          <h1 className="alegreya-normal text-[50px] uppercase">
             How to subscribe ?
           </h1>
-          <h1 className="text-[25px] py-8">
+          <h1 className="abel text-[25px] py-8 ">
             <a href="#" className="hover:underline">
               <big>F</big>ind Answers to some of your questions here..
             </a>
@@ -313,10 +311,10 @@ const LandingPage = () => {
         </div>
         <hr class="border-2 border-purple-800 " />
         <div className="pl-8">
-          <h1 className="font-normal text-[50px] uppercase">
+          <h1 className="alegreya-normal text-[50px] uppercase">
             What content is available ?
           </h1>
-          <h1 className="text-[25px] py-8 ">
+          <h1 className="abel text-[25px] py-8 ">
             <a href="#" className="hover:underline">
               <big>F</big>ind Answers to some of your questions here..
             </a>
@@ -324,20 +322,20 @@ const LandingPage = () => {
         </div>
         <hr class="border-2 border-purple-800 " />
         <div className="pl-8">
-          <h1 className="font-normal text-[50px] uppercase">
+          <h1 className="alegreya-normal text-[50px] uppercase">
             Is it supported by all devices ?
           </h1>
-          <h1 className="text-[25px] py-8 ">
+          <h1 className="abel text-[25px] py-8 ">
             <a href="#" className="hover:underline">
               <big>F</big>ind Answers to some of your questions here..
             </a>
           </h1>
         </div>
         <div className="pl-0">
-          <h1 className=" text-[50px]  ">
-            still have some questions ?
+          <h1 className="alegreya-bold text-[50px]  ">
+            <big>s</big>till have some questions ?
           </h1>
-          <h1 className="text-[25px] py-8 abel">
+          <h1 className="abel text-[25px] py-8 abel">
             <big>C</big>ontact our support team for further assistance..
           </h1>
           <a
@@ -350,7 +348,7 @@ const LandingPage = () => {
         </div>
       </div>
       <div class="w-full bg-black">
-        <div className="w-full flex">
+        <div className="abel w-full flex">
           <div className="flex-1 ">
             <img
               src={logoBlack}
@@ -360,16 +358,16 @@ const LandingPage = () => {
           </div>
           <div class="flex-1 text-white m-auto px-8 text-[25px]">
             <h1 className="m-4">Adress:</h1>
-            <p className="px-8">Centre urbain nord, TUNIS</p>
+            <p className="px-4">Tunis, Centre urbain nord, 1082</p>
             <h1 className="m-4">Contact:</h1>
-            <p className="px-8  "> +216 12 345 678 </p>
+            <p className="px-4  "> +216 12 345 678 </p>
           </div>
           <div class="flex-1 text-white m-auto px-8 text-[25px]">
             <h1 className="m-4 hover:underline">
-              <button href="#" onClick={()=>navigate("/login")}>LOGIN</button>
+              <button href="#" onClick={() => navigate("/login")}>LOGIN</button>
             </h1>
             <h1 className="m-4 hover:underline">
-              <button href="#" onClick={()=>navigate("/signup")} >SIGN UP</button>
+              <button href="#" onClick={() => navigate("/signup")} >SIGN UP</button>
             </h1>
             <h1 className="m-4 hover:underline">
               <button href="">Browse Libaries</button>
@@ -377,7 +375,7 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="border-2 text-white mx-20" />
-        <div className="text-white flex p-8">
+        <div className="abel text-white flex p-8">
           <h1 className="flex-1 pl-10 uppercase">® All rights are reserved</h1>
           <div className="flex-1 flex">
             <a href="#" className="hover:underline flex-1">

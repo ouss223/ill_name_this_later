@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -12,27 +12,24 @@ const validationSchema = Yup.object().shape({
     .min(8, "Password must be at least 8 characters long"),
 });
 
-const LoginForm = ({setAuth,setRole}) => {
+const LoginForm = ({ setAuth, setRole }) => {
   const navigate = useNavigate();
-  const [call,setCall] = useState(false);
+  const [call, setCall] = useState(false);
   const [infos, setInfos] = useState();
   const handleSubmit = (values, { setSubmitting }) => {
     // Submit your form data here, e.g., send a request to your backend
     console.log(values);
-    setInfos((prev)=>values);
+    setInfos((prev) => values);
     setCall(!call);
 
     setSubmitting(false);
   };
-  useEffect(()=>
-  {
-    async function login()
-    {
-      if(!infos)
-      {
+  useEffect(() => {
+    async function login() {
+      if (!infos) {
         return;
       }
-      try{
+      try {
         const response = await fetch(
           "http://localhost:8000/api/login.php",
           {
@@ -46,22 +43,21 @@ const LoginForm = ({setAuth,setRole}) => {
             }),
           }
         );
-        if(!response.ok)
-        {
-            console.log("error");
-            return;
+        if (!response.ok) {
+          console.log("error");
+          return;
         }
         const data = await response.json();
         console.log(data);
         setRole(data.role);
         setAuth(data.auth);
-      }catch(e){
+      } catch (e) {
         console.log(e);
       }
     }
     login();
 
-  },[call])
+  }, [call])
 
   return (
     <Formik
@@ -71,13 +67,13 @@ const LoginForm = ({setAuth,setRole}) => {
     >
       {({ isSubmitting }) => (
         <Form action="/login" method="post">
-          <div className="relative  w-3/4 mx-auto ">
+          <div className="abel relative  w-3/5 my-12 mx-auto ">
             <div>
               <Field
                 type="text"
                 name="email"
                 placeholder="E-mail"
-                className="text-2xl peer h-[100px] placeholder-[#FB2576]  text-[#FB2576] w-full border-b border-[#FB2576] bg-transparent pt-4 pb-1.5 font-sans font-normal outline outline-0 transition-all focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                className="text-[35px] peer h-[100px] placeholder-[#FB2576] text-[#FB2576] w-full border-b-[2px] border-[#FB2576] bg-transparent pt-4 pb-1.5 outline outline-0 transition-all focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               />
               <ErrorMessage
                 name="email"
@@ -90,7 +86,7 @@ const LoginForm = ({setAuth,setRole}) => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="text-2xl peer h-[100px] placeholder-[#FB2576] text-[#FB2576] w-full border-b border-[#FB2576] bg-transparent pt-4 pb-1.5 font-sans  font-normal outline outline-0 transition-all focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                className="text-[35px] peer h-[100px] placeholder-[#FB2576] text-[#FB2576] w-full border-b-[2px] border-[#FB2576] bg-transparent pt-4 pb-1.5 outline outline-0 transition-all focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               />
               <ErrorMessage
                 name="password"
@@ -109,9 +105,9 @@ const LoginForm = ({setAuth,setRole}) => {
               </span>
             </button>
             <div className="bottom-0 w-full text-left ml-10 mb-12">
-              <h1 className="text-bold text-[#FB2576] text-xl uppercase">
+              <h1 className="abel text-[30px] text-[#FB2576]/30 uppercase">
                 Don't have an account?{" "}
-                <a href="#" onClick={()=>navigate("/signup")} className="hover:underline">
+                <a href="#" onClick={() => navigate("/signup")} className="hover:underline">
                   Sign up
                 </a>
               </h1>

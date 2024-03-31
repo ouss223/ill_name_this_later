@@ -4,11 +4,11 @@ import { useAvatar } from "../AvatarContext";
 import logo from "../assets/logo_dark.png";
 import { useState } from "react";
 import Cookies from "js-cookie";
-const NavBar = ({ child, username,setAuth }) => {
+const NavBar = ({ child, username, setAuth }) => {
   const navigate = useNavigate();
   const { avatarId, updateAvatarId } = useAvatar();
   const [appear, setAppear] = useState(false);
-  console.log(username,"in navbar");
+  console.log(username, "in navbar");
   console.log(avatarId);
   const urls = [
     "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/8-Employee-512.png",
@@ -30,25 +30,25 @@ const NavBar = ({ child, username,setAuth }) => {
           className="w-[150px] h-[50px] cursor-pointer"
           onClick={() => navigate("/")}
         />
-        <button>Movies</button>
-        <button>Series</button>
+        <button className="alegreya-normal text-[30px] " >Movies</button>
+        <button className="alegreya-normal text-[30px] ">Series</button>
         <button
-        onClick={
-          () => navigate("/blogposts")
-        }
-        
+          onClick={
+            () => navigate("/blogposts")
+          }
+          className="alegreya-normal text-[30px]"
         >Blog</button>
         {child}
       </div>
       <div className="w-1/6 flex justify-end items-center space-x-4  ">
-        <h1 className="border-l border-dark-pink pl-3 text-white ">
+        <h1 className="alegreya-normal text-[30px] border-l border-dark-pink pl-3 text-white ">
           {username}
           {appear && (
             <div className="absolute bg-black z-50 mt-4  rounded-lg px-2  mx-auto flex flex-col  ">
               <button
-                className="border-b border-glowy-pink text-2xl p-2"
+                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
                 onClick={() => {
-                  
+
                   navigate("/watchlist");
                   setAppear(!appear);
                 }}
@@ -56,9 +56,9 @@ const NavBar = ({ child, username,setAuth }) => {
                 Watchlist
               </button>
               <button
-                className="border-b border-glowy-pink text-2xl p-2"
+                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
                 onClick={() => {
-                  
+
                   navigate("/favorites");
                   setAppear(!appear);
                 }}
@@ -66,20 +66,19 @@ const NavBar = ({ child, username,setAuth }) => {
                 Favorites
               </button>
               <button
-                className="border-b border-glowy-pink text-2xl p-2"
+                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
                 onClick={() => {
-                  
+
                   navigate("/settings");
                   setAppear(!appear);
                 }}
               >
                 Settings
               </button>
-              <button onClick={()=>
-              {
+              <button onClick={() => {
                 Cookies.remove('auth');
                 setAuth(null);
-              }} className="text-2xl p-2">Log out</button>
+              }} className="alegreya-normal text-[50px] p-2">Log out</button>
             </div>
           )}
         </h1>

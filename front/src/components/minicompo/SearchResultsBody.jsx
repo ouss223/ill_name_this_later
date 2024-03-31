@@ -67,7 +67,7 @@ const SearchResultsBody = () => {
   }, [query, pageNumber]);
 
   return (
-    <div className="flex flex-col mb-20">
+    <div className="alegreya-normal flex flex-col mb-20">
       <div className="flex flex-wrap gap-10 lg:px-24 px-10 pb-12">
         {
           (!shows || shows.length === 0 )&& !loading ? (

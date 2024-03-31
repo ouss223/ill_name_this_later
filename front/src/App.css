@@ -5,14 +5,16 @@
   font-weight: 400;
   font-style: normal;
 }
+
 .alegreya-normal {
   font-family: "Alegreya Sans SC", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+
 .alegreya-bold {
   font-family: "Alegreya Sans SC", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -52,34 +54,37 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 body {
   background-color: black;
 }
 
-.bg-glowy-pink{
+.bg-glowy-pink {
   background-color: #FB2576;
 }
-.bg-dark-pink
-{
+
+.bg-dark-pink {
   background-color: #FB257680;
 }
-.text-glowy-pink
-{
+
+.text-glowy-pink {
   color: #FB2576;
 }
-.text-dark-pink
-{
+
+.text-dark-pink {
   color: #FB257680;
 }
-.border-glowy-pink{
+
+.border-glowy-pink {
   border-color: #FB2576;
 }
-.border-dark-pink
-{
+
+.border-dark-pink {
   border-color: #FB257680;
 }
 
@@ -92,6 +97,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 100;
   }

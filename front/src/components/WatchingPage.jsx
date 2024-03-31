@@ -180,12 +180,12 @@ const WatchingPage = ({ auth }) => {
   return (
     <div className="mb-20 w-full max-w-[1100px] mx-auto  ">
       {info && (
-        <h1 className="text-white  ml-10 mb-10 text-4xl text-glowy-pink font-semibold">
+        <h1 className="alegreya-bold text-[60px] text-white  ml-10 mb-10 text-4xl text-glowy-pink">
           {info.Title}
         </h1>
       )}
       <div className="flex flex-row mb-32 px-10 gap-5 ">
-        <div className={ type==="movie" ? "w-full  flex flex-col  justify-center items-center gap-4 max-w-[1100px] mx-auto" : "w-4/6  flex flex-col justify-center items-center gap-4 "}>
+        <div className={type === "movie" ? "w-full  flex flex-col  justify-center items-center gap-4 max-w-[1100px] mx-auto" : "w-4/6  flex flex-col justify-center items-center gap-4 "}>
           <iframe
             sandbox="allow-same-origin allow-scripts"
             className="border-2 rounded-lg border-gray-800 w-full h-[500px]"
@@ -199,7 +199,7 @@ const WatchingPage = ({ auth }) => {
           ></iframe>
           <div className="flex gap-2 text-gray-200 text-[14px]">
             <div
-              className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              className="abel text-[30px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
               onClick={() => {
                 if (lists[0]) {
                   setRemover((prev) => [true, prev[1]]);
@@ -220,7 +220,7 @@ const WatchingPage = ({ auth }) => {
               />
             </div>
             <div
-              className="bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              className="abel text-[30px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
               onClick={() => {
                 if (lists[1]) {
                   setRemover((prev) => [prev[1], true]);
@@ -271,7 +271,7 @@ const WatchingPage = ({ auth }) => {
                 currentSeason.Episodes.map((episode, index) => (
                   <div key={index} className="flex justify-between px-5 py-3">
                     <h1
-                      className="cursor-pointer "
+                      className="alegreya-normal cursor-pointer "
                       onClick={() => setPicked((prev) => [prev[0], index + 1])}
                     >
                       Episode {index + 1} : {episode.Title}

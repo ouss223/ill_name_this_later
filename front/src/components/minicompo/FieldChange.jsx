@@ -47,7 +47,7 @@ const FieldChange = ({ fieldName, setAppear, auth }) => {
   }, [change]);
 
   return (
-    <div className="absolute max-w-[600px] mt-[400px]  sm:bg-gray-300 bg-gray-300 h-2/3 sm:w-8/12 w-full flex flex-col text-black sm:bg-opacity-90 bg-opacity-100 rounded-md justify-center p-4 ">
+    <div className="absolute max-w-[600px] mt-[400px]  sm:bg-gray-300 bg-gray-300 h-2/3 sm:w-8/12 w-full flex flex-col text-black sm:bg-opacity-90 bg-opacity-100 rounded-md justify-center p-4 abel ">
       <h1 className="text-black text-center mb-10 font-semibold text-2xl">
         Change {fieldName}
       </h1>

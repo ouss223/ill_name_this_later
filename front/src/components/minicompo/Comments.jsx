@@ -81,12 +81,12 @@ const AddComment = ({ auth, id, setNotice, urls, episode, season }) => {
 
   return (
     <div className="border-b border-glowy-pink pb-10  max-w-[850px] w-10/12 mx-auto relative">
-      <h1 className="text-glowy-pink  text-4xl font-semibold "> Comments :</h1>
+      <h1 className="alegreya-bold text-glowy-pink text-[60px] "> Comments :</h1>
       <div className=" text-white flex flex-row mx-auto w-full gap-4 text-center my-10  ">
         <img src={urls[avatarId]} className="h-16" />
         <input
           type="text"
-          className="p-1  w-full text-glowy-pink bg-black placeholder-pink-800 text-2xl"
+          className="alegreya-normal p-1  w-full text-glowy-pink bg-black placeholder-pink-800 text-2xl"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a Comment "
@@ -235,14 +235,14 @@ const CommentList = ({
                       <img src={urls[3]} className="h-16" alt="" />
                       <div>
                         {" "}
-                        <h1 className="text-2xl font-semibold">
+                        <h1 className="alegreya-bold text-2xl font-semibold">
                           {comment.username}
                         </h1>
-                        <h1 className="text-gray-500">{comment.timestamp}</h1>
+                        <h1 className="abel text-gray-500">{comment.timestamp}</h1>
                       </div>
                     </div>
 
-                    <h1 className="mt-2 text-xl ">{comment.content}</h1>
+                    <h1 className="alegreya-bold mt-2 text-xl ">{comment.content}</h1>
                     {comment.own && (
                       <div className="flex justify-end">
                         <EditIcon
@@ -273,7 +273,7 @@ const CommentList = ({
   );
 };
 
-const InputComment = ({ setComment, setAdd, text, setCall, urls,value }) => {
+const InputComment = ({ setComment, setAdd, text, setCall, urls, value }) => {
   const [local_comment, setLocal_comment] = useState(value);
   const { avatarId, updateAvatarId } = useAvatar();
   return (
@@ -281,7 +281,7 @@ const InputComment = ({ setComment, setAdd, text, setCall, urls,value }) => {
       <div className="text-white flex flex-row mx-auto w-full gap-4 text-center ">
         <input
           type="text"
-          className="p-1 w-full text-glowy-pink bg-black placeholder-pink-800 text-2xl"
+          className="alegreya-normal p-1 w-full text-glowy-pink bg-black placeholder-pink-800/50 text-2xl"
           value={local_comment}
           onChange={(e) => {
             setLocal_comment(e.target.value);
@@ -291,7 +291,7 @@ const InputComment = ({ setComment, setAdd, text, setCall, urls,value }) => {
           style={{ outline: "none" }}
         />
         <button
-          className="w-[100px] mx-auto bg-glowy-pink absolute right-0 bottom-5"
+          className="alegreya-normal text-[20px] w-[100px] mx-auto bg-glowy-pink absolute right-0 bottom-5"
           onClick={() => {
             if (local_comment !== "") {
               setCall(true);

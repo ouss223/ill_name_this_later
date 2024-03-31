@@ -84,7 +84,7 @@ const SliderThing = ({ shows }) => {
                   alt="show"
                   className="w-[200px] h-[300px] rounded-md hover:opacity-40"
                 />
-                <h1 className="text-white absolute px-2 bottom-5 text-start w-[200px] text-lg space-y-4 font-bold  group-hover:visible invisible z-50">
+                <h1 className="abel text-white absolute px-2 bottom-5 text-start w-[200px] text-lg space-y-4 font-bold  group-hover:visible invisible z-50">
                   {show.Title}
                   <PlayCircleIcon style={{ color: 'orange' }} />
 
@@ -105,7 +105,7 @@ const SliderThing = ({ shows }) => {
                     alt="show"
                     className="w-[200px] h-[300px] rounded-md"
                 />
-                <h1 className="text-white text-start w-[200px] text-lg font-bold ">
+                <h1 className="abel text-white text-start w-[200px] text-lg font-bold ">
                     {show.Title}
                 </h1>
                 </div>

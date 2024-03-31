@@ -56,11 +56,8 @@ function Contact() {
               el forja lila ba7thena!
             </h6>
           </button>
-          <h2 className="text-2xl sm:text-4xl mb-5" style={{ fontWeight: 400 }}>
-            <span className="text-3xl sm:text-5xl" style={{ fontWeight: 400 }}>
-              C
-            </span>
-            ONTACT US NOW!
+          <h2 className="alegreya-normal text-[50px] mb-5" style={{ fontWeight: 400 }}>
+            <big>C</big>ONTACT US NOW!
           </h2>
         </div>
         <img
@@ -75,7 +72,7 @@ function Contact() {
       <div className="flex justify-center items-center md:w-1/2">
         <div className="bg-white p-10 lg w-3/4 md:w-5/6">
           {/* Formulaire */}
-          <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
+          <form className="abel flex flex-col gap-10" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Name"
@@ -107,7 +104,7 @@ function Contact() {
             {showError && <p className="text-red-500">{errorMessage}</p>}
             <button
               type="submit"
-              className="bg-indigo-950 text-white py-2 px-8 hover:bg-indigo-950 mt-4 self-end"
+              className="alegreya-normal bg-indigo-950 text-white py-2 px-8 hover:bg-indigo-950 mt-4 self-end"
             >
               SUBMIT
             </button>

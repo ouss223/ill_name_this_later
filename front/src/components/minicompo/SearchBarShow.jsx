@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SearchBarShow = ({ show,margin,setQuery,searchRef }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-row space-x-2 cursor-pointer  "
+    <div className="alegreya-normal flex flex-row space-x-2 cursor-pointer  "
     onClick={()=>
     {
 

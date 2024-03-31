@@ -26,7 +26,7 @@ const PostBlogPost = ({ auth }) => {
           const base64Image = reader.result.split(",")[1]; // Extract the Base64 image data
           fetch("http://localhost:8000/api/postblogpost.php", {
             method: "POST",
-            headers: {  
+            headers: {
               "Content-Type": "application/json",
               Authorization: auth,
             },
@@ -51,7 +51,7 @@ const PostBlogPost = ({ auth }) => {
   }, [go]);
 
   return (
-    <div className="text-white flex flex-row mx-auto max-w-[1200px] relative pb-20">
+    <div className="alegreya-normal text-white flex flex-row mx-auto max-w-[1200px] relative pb-20">
       <div className="flex flex-col gap-40 w-4/6 mx-10">
         <input
           value={title}
@@ -78,10 +78,10 @@ const PostBlogPost = ({ auth }) => {
           className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
           onChange={handleImageChange}
         />
-        {imageUrl && ( 
+        {imageUrl && (
           <img src={imageUrl} alt="Preview" className=" object-cover" />
         )}
-        {!imageUrl && ( 
+        {!imageUrl && (
           <div className="flex items-center flex-col">
             <img src={image} className="h-24 mr-2" />{" "}
             <span className="text-3xl text-dark-pink">Upload Image</span>

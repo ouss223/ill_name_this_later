@@ -108,7 +108,7 @@ const SignupForm = ({ setAuth }) => {
                             <span className="relative text-white group-hover:text-white px-2">SIGN UP</span>
                         </button>
                         <div className="bottom-0 w-full text-left ml-10 mb-12">
-                            <h1 className="text-bold text-[#FB2576] text-xl uppercase">Already have an account? <a href="#" onClick={()=>navigate("/login")} className="hover:underline">Log in</a></h1>
+                            <h1 className="abel text-[#FB2576]/30 text-[30px] uppercase">Already have an account? <a href="#" onClick={() => navigate("/login")} className="hover:underline">Log in</a></h1>
                         </div>
                     </div>
                 </Form>

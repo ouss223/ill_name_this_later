@@ -1,13 +1,16 @@
 import react from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const SearchBarShow = ({ show,margin }) => {
+const SearchBarShow = ({ show,margin,setQuery,searchRef }) => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-row space-x-2 cursor-pointer  "
     onClick={()=>
     {
-        navigate(`/watch/${show.Type}/${show.imdbID}`)
+
+        navigate(`/watch/${show.Type}/${show.imdbID}`);
+        setQuery(["", ""]);
+        searchRef.current.value = "";
     }
     }
     >

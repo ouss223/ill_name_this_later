@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SearchResultsBody from "./minicompo/SearchResultsBody.jsx";
 //important notice : bear in mind to replace "not found pictures" with a default image
 //add a functiion to check if show is animation if so redirect to a page saying that we don't have animations yet ;
-const Search = ({username,setAuth}) => {
+const Search = ({ username, setAuth }) => {
   const [query, setQuery] = useState(["", ""]);
   const [shows, setShows] = useState([]);
   const searchRef = useRef(null);
@@ -21,10 +21,14 @@ const Search = ({username,setAuth}) => {
           query[0] === "" ||
           searchRef.current.value === "" ||
           query[0].length < 4
-        )
+        ){
           return;
-
-        fetch(`http://www.omdbapi.com/?apikey=4a8e82cc&s=${show_name}&page=1`)
+        }
+          
+        const trimmed = show_name.trim();
+        fetch(
+          `http://www.omdbapi.com/?apikey=4a8e82cc&s=${trimmed}&page=1`
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -56,16 +60,16 @@ const Search = ({username,setAuth}) => {
           if (e.key === "Enter") {
             setShows(null);
             setTotalSearches((prev) => [prev[0], prev[0]]);
-            navigate(`/search/${e.target.value}/${totalSearches[0]}/1`);
+            navigate(`/search/${e.target.value.trim()}/${totalSearches[0]}/1`);
             e.target.value = "";
             e.preventDefault();
           }
         }}
       />
-      {shows && shows.length > 0 && (
+      {shows && shows.length > 0 && searchRef.current.value.length>3 &&
+            query[0] !== "" && (
         <div className="absolute space-y-2 top-[40px] bg-gray-900 p-4 rounded-xl w-full  max-w-[650px] right-[1px]">
-          {shows &&
-            shows.length > 0 &&
+          { 
             shows
               .slice(0, shows.length > 4 ? 4 : shows.length)
               .map((show, index) => {
@@ -74,6 +78,8 @@ const Search = ({username,setAuth}) => {
                     show={show}
                     key={show.Title + index}
                     margin={index * 100}
+                    setQuery={setQuery}
+                    searchRef={searchRef}
                   />
                 );
               })}

@@ -178,14 +178,14 @@ const WatchingPage = ({ auth }) => {
   }, [remover]);
 
   return (
-    <div className="mb-20  ">
+    <div className="mb-20 w-full max-w-[1100px] mx-auto  ">
       {info && (
         <h1 className="text-white  ml-10 mb-10 text-4xl text-glowy-pink font-semibold">
           {info.Title}
         </h1>
       )}
       <div className="flex flex-row mb-32 px-10 gap-5 ">
-        <div className="w-4/6  flex flex-col justify-center items-center gap-4 ">
+        <div className={ type==="movie" ? "w-full  flex flex-col  justify-center items-center gap-4 max-w-[1100px] mx-auto" : "w-4/6  flex flex-col justify-center items-center gap-4 "}>
           <iframe
             sandbox="allow-same-origin allow-scripts"
             className="border-2 rounded-lg border-gray-800 w-full h-[500px]"

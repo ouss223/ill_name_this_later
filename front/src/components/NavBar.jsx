@@ -41,10 +41,10 @@ const NavBar = ({ child, username,setAuth }) => {
         {child}
       </div>
       <div className="w-1/6 flex justify-end items-center space-x-4  ">
-        <h1 className="border-l border-dark-pink pl-3 text-white">
+        <h1 className="border-l border-dark-pink pl-3 text-white ">
           {username}
           {appear && (
-            <div className="absolute bg-black z-50 mt-4 rounded-lg px-2 mx-auto flex flex-col right-2">
+            <div className="absolute bg-black z-50 mt-4  rounded-lg px-2  mx-auto flex flex-col  ">
               <button
                 className="border-b border-glowy-pink text-2xl p-2"
                 onClick={() => {

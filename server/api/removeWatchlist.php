@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/rem
         exit;
     }
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
-    $show_name = $body["show_name"];
+    $show_name = sanitizeInput($body["show_name"]);
 
     $user_id = verifyToken(tokenExtractor($auth));   
 

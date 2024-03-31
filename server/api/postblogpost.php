@@ -27,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/pos
         exit;
     }
     $auth = $_SERVER["HTTP_AUTHORIZATION"];
-    $title = $body["title"];
-    $content = $body["content"];
+    $title = sanitizeInput($body["title"]);
+    $content = sanitizeInput($body["content"]);
 
-    $image = $body['image'];
+    $image = sanitizeInput($body['image']); //may cause issues
 
     $admin_id = verifyToken(tokenExtractor($auth));   
     

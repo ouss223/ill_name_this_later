@@ -2,6 +2,11 @@
 
     include_once '../models/db.php';
     global $myDB;
+    function sanitizeInput($input) {
+        //confused cause it screws with some data
+        return $input;
+    }
+    
     function addFavorite($show_name,$user_id)
     {
         global $myDB;
@@ -170,7 +175,7 @@ function getComments($show_id, $user_id, $episode, $season)
     }
     function uploadImage($imageBase64)
 {
-    $targetDir = "/Users/ous223/Documents/projet sellaouti/front/public/storage/";
+    $targetDir = "/Users/ous223/Documents/projet sellaouti/ill_name_this_later/front/public/storage/";
 
     $imageData = base64_decode($imageBase64);
 

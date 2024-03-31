@@ -19,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/add
         exit;
     }
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
-    $show_id = $body["show_id"];
-    $comment = $body["comment"];
+    $show_id = sanitizeInput($body["show_id"]);
+    $comment = sanitizeInput($body["comment"]);
 
-    $episode = $body["episode"];
-    $season = $body["season"];
+    $episode = sanitizeInput($body["episode"]);
+    $season = sanitizeInput($body["season"]);
 
     $user_id = verifyToken(tokenExtractor($auth));   
     if($user_id !== false){

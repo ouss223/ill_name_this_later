@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || $_SERVER["REQUEST_URI"] != "/api/log
 }
 
 $body = json_decode(file_get_contents('php://input'), true);
-$email = $body["email"];
+$email = sanitizeInput($body["email"]);
 $password = $body["password"];
 
 $result = selectUserByEmail($email);

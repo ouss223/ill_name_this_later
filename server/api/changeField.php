@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "PATCH" && $_SERVER["REQUEST_URI"] == "/api/ch
         exit;
     }
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
-    $field_name = $body["field_name"];
-    $field_value = $body["field_value"];
+    $field_name = sanitizeInput($body["field_name"]);
+    $field_value = sanitizeInput($body["field_value"]);
     $user_id = verifyToken(tokenExtractor($auth));   
     if($user_id !== false){
         $result = changeField($user_id,$field_name,$field_value);

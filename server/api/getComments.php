@@ -22,10 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/get
 
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
     $user_id = verifyToken(tokenExtractor($auth));  
-    $show_id = $body["show_id"]; 
+    $show_id = sanitizeInput($body["show_id"]); 
 
-    $episode = $body["episode"];
-    $season = $body["season"];
+    $episode = sanitizeInput($body["episode"]);
+    $season = sanitizeInput($body["season"]);
     
     if ($user_id!== false) {
 

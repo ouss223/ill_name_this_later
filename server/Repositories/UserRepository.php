@@ -36,7 +36,7 @@
     }
     function getUserInfos($user_id){
         global $myDB;
-        $query = "SELECT username, email,avatar FROM users WHERE id = ?";
+        $query = "SELECT username, email,avatar,role FROM users WHERE id = ?";
         $stmt = $myDB->prepare($query);
         $stmt->bind_param("i", $user_id);
         $stmt->execute();

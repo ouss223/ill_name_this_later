@@ -49,12 +49,7 @@ $query1 = "CREATE TABLE IF NOT EXISTS users (
     avatar VARCHAR(50) NOT NULL DEFAULT '1',
     email VARCHAR(50) NOT NULL
 )";
-$query2 = "CREATE TABLE IF NOT EXISTS admin (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL
-)";
+
 $query3 = "CREATE TABLE IF NOT EXISTS favorites(
     id INT AUTO_INCREMENT PRIMARY KEY,
     show_name VARCHAR(50) NOT NULL,
@@ -76,7 +71,7 @@ $query5 = "CREATE TABLE IF NOT EXISTS blog_post (
     admin_id INT NOT NULL,
     image VARCHAR(250) NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (admin_id) REFERENCES admin(id)
+    FOREIGN KEY (admin_id) REFERENCES users(id)
 )";
 
 $query6 = "CREATE TABLE IF NOT EXISTS comments (
@@ -90,10 +85,7 @@ $query6 = "CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (user_id) REFERENCES users(id)
 )";
 
-
-
 $myDB->executeQuery($query1);
-$myDB->executeQuery($query2);
 $myDB->executeQuery($query3);
 $myDB->executeQuery($query4);
 $myDB->executeQuery($query5);

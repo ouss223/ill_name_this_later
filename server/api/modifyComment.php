@@ -22,10 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/mod
 
     $auth = $_SERVER['HTTP_AUTHORIZATION'];
     $user_id = verifyToken(tokenExtractor($auth));  
-    $show_id = $body["show_id"]; 
-    $comment_id = $body["comment_id"];
-    $operation = $body["operation"];
-    $new_comment = $body["new_comment"];
+    $show_id = sanitizeInput($body["show_id"]); 
+    $comment_id = sanitizeInput($body["comment_id"]);
+    $operation = sanitizeInput($body["operation"]);
+    $new_comment = sanitizeInput($body["new_comment"]);
     
     if ($user_id!== false) {
         if($operation=="delete")

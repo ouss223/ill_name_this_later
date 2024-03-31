@@ -18,9 +18,9 @@ global $myDB;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/signup.php") {
     $body = $requestData = json_decode(file_get_contents('php://input'), true);
-    $username = $body["username"];
+    $username = sanitizeInput($body["username"]);
     $password = $body["password"];
-    $email = $body["email"];
+    $email = sanitizeInput($body["email"]);
     
     if (emailExists($email)) {
         echo "Email already exists";

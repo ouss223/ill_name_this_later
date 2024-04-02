@@ -11,7 +11,7 @@ function Login({ setAuth, setRole }) {
 
     return (
         <div className="bg-black h-full w-full flex md:flex-row ">
-            <div className="lg:w-1/2 w-full relative mx-auto ">
+            <div className="lg:w-1/2 w-full  mx-auto ">
                 <div className=" mx-auto">
                     <a href="#" onClick={() => navigate("/landing")}><img src={logo} alt="logo" className="block mx-auto mt-8" /></a>
                 </div>
@@ -20,8 +20,8 @@ function Login({ setAuth, setRole }) {
                 </div>
                 <LoginForm setAuth={setAuth} setRole={setRole} />
             </div>
-            <div className="md:w-1/2 hidden lg:block h-full">
-                <img src={logimg} alt="Log in image" className="object-cover w-full h-full" />
+            <div className="md:w-1/2 hidden lg:block h-full relative">
+                <img src={logimg} alt="Log in image" className="h-screen w-full object-cover absolute" />
             </div>
         </div>
 

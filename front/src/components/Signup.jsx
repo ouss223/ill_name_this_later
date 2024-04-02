@@ -21,8 +21,8 @@ function Signup({ setAuth }) {
                 </div>
                 <SignupForm setAuth={setAuth} />
             </div>
-            <div className="md:w-1/2 hidden lg:block h-full">
-                <img src={logimg} alt="sign up" className="object-cover w-full h-full" />
+            <div className="md:w-1/2 hidden lg:block h-full relative">
+                <img src={logimg} alt="sign up" className=" h-screen w-full object-cover absolute" />
             </div>
         </div>
     );

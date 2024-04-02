@@ -20,7 +20,7 @@ const SearchResultsBody = () => {
       try {
         setLoading(true);
         setShows([]);
-        if (query === "" || query.length < 4) return;
+        if (query === "" ) return;
 
         const response = await fetch(
           `http://www.omdbapi.com/?apikey=4a8e82cc&s=${show_name}&page=${pageNumber}`

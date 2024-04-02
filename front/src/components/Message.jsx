@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 
 const titles=["Your message is sent Successfully!","Your account has been made Successfully","Your blog has been posted Successfully"];
-const contents=["We acknowledge receipt of your message and you will be hearing from us ASAP.","You will be directed to the home page .Enjoy watching your favorite movies on Rakcha","You will be directed to the home page .Enjoy watching your favorite movies on Rakcha"];
+const contents=["We acknowledge receipt of your message and you will be hearing from us ASAP.","You will be directed to the home page .Enjoy watching your favorite movies on Rakcha","Good work , You will be directed to the home page ."];
 const button_texts=["Cool ! " ,"Start Watching !","cool ! "];
 
 

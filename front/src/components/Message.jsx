@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 
 const titles=["Your message is sent Successfully!","Your account has been made Successfully","Your blog has been posted Successfully"];
 const contents=["We acknowledge receipt of your message and you will be hearing from us ASAP.","You will be directed to the home page .Enjoy watching your favorite movies on Rakcha","Good work , You will be directed to the home page ."];
@@ -13,7 +13,7 @@ function Message({content, title, button_text}) {
   const navigate = useNavigate();
   const {type} = useParams();
   return (
-    <div className="bg-black min-h-screen flex justify-center items-center">
+    <motion.div className="bg-black min-h-screen flex justify-center items-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="bg-white p-6 lg:p-12 text-center md:max-w-xl mx-4 md:mx-auto my-8 md:my-12">
 
         <br /><br />
@@ -31,7 +31,7 @@ function Message({content, title, button_text}) {
         </button>
 
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default Message;

@@ -2,13 +2,13 @@ import react from "react";
 import down from "../assets/down.svg";
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "./NavBar";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Comments from "./minicompo/Comments.jsx";
+import { motion } from "framer-motion";
 const WatchingPage = ({ auth }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { id, type } = useParams();
@@ -178,7 +178,7 @@ const WatchingPage = ({ auth }) => {
   }, [remover]);
 
   return (
-    <div className="mb-20 w-full max-w-[1100px] mx-auto  ">
+    <motion.div className="mb-20 w-full max-w-[1100px] mx-auto  min-h-screen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       {info && (
         <h1 className="alegreya-bold text-[45px] text-white  ml-10 mb-10 text-4xl text-glowy-pink">
           {info.Title}
@@ -283,7 +283,7 @@ const WatchingPage = ({ auth }) => {
         )}
       </div>
       <Comments auth={auth} id={id} season={picked[0]} episode={picked[1]} />
-    </div>
+    </motion.div>
   );
 };
 

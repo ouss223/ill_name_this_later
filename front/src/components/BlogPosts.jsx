@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { motion } from "framer-motion";
 const BlogPosts = ({ auth }) => {
   const [posts, setPosts] = useState(null);
   useEffect(() => {
@@ -27,11 +28,15 @@ const BlogPosts = ({ auth }) => {
   }, []);
 
   return (
-    <div className="text-white max-w-[1300px] mx-auto ">
+    <motion.div
+      className="text-white max-w-[1300px] mx-auto min-h-screen " 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <h1 className="text-6xl ml-12 mb-12 alegreya-bold">Blog Posts</h1>
       <div className="flex flex-col  mx-12 ">
-        {
-          posts &&
+        {posts &&
           posts.map((post) => (
             <div className="flex flex-row justify-between border-b border-dark-pink py-4">
               <div className="space-y-2 ">
@@ -41,19 +46,13 @@ const BlogPosts = ({ auth }) => {
                 <h3 className="abel text-gray-400 text-[18px]">
                   {post.timestamp}
                 </h3>
-                <p className="abel text-[23px]">
-                  {post.content}
-                </p>
+                <p className="abel text-[23px]">{post.content}</p>
               </div>
               <img src={post.image} className="h-[200px]" />
             </div>
-          ))
-        }</div>
-
-
-
-
-    </div>
+          ))}
+      </div>
+    </motion.div>
   );
 };
 //random random random random random random random random

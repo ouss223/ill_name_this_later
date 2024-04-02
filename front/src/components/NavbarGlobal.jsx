@@ -4,7 +4,6 @@ import NavBar from "./NavBar";
 import Searching from "../assets/search-gray.svg";
 import SearchBarShow from "./minicompo/SearchBarShow";
 import { useNavigate } from "react-router-dom";
-import SearchResultsBody from "./minicompo/SearchResultsBody.jsx";
 //important notice : bear in mind to replace "not found pictures" with a default image
 //add a functiion to check if show is animation if so redirect to a page saying that we don't have animations yet ;
 const Search = ({ username, setAuth }) => {

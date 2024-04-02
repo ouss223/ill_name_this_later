@@ -6,6 +6,7 @@ import usr from "../assets/img/usr.png";
 import logoBlack from "../assets/img/logoBlack.png";
 import LandingVideo from "../assets/img/LandingVideo.mp4";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 const LandingPage = () => {
   const navigate = useNavigate();
   const Discover = useRef(null);
@@ -16,7 +17,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="bg-white w-full p-0 m-0">
+    <motion.div className="bg-white w-full p-0 m-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <nav
         className="alegreya-normal relative flex w-full flex-wrap items-center justify-between bg-gray-600 py-0 shadow-dark-mild  lg:py-2"
         data-twe-navbar-ref
@@ -387,7 +388,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

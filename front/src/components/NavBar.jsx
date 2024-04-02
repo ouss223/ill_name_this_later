@@ -4,6 +4,8 @@ import { useAvatar } from "../AvatarContext";
 import logo from "../assets/logo_dark.png";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { motion, AnimatePresence } from "framer-motion";
+
 const NavBar = ({ child, username, setAuth }) => {
   const navigate = useNavigate();
   const { avatarId, updateAvatarId } = useAvatar();
@@ -30,56 +32,66 @@ const NavBar = ({ child, username, setAuth }) => {
           className="w-[150px] h-[50px] cursor-pointer"
           onClick={() => navigate("/")}
         />
-        <button className="alegreya-normal text-[22px] " >Movies</button>
+        <button className="alegreya-normal text-[22px] ">Movies</button>
         <button className="alegreya-normal text-[22px] ">Series</button>
         <button
-          onClick={
-            () => navigate("/blogposts")
-          }
+          onClick={() => navigate("/blogposts")}
           className="alegreya-normal text-[22px]"
-        >Blog</button>
+        >
+          Blog
+        </button>
         {child}
       </div>
       <div className="w-1/6 flex justify-end items-center space-x-4  ">
         <h1 className="alegreya-normal text-[22px] border-l border-dark-pink pl-3 text-white ">
           {username}
           {appear && (
-            <div className="absolute bg-black z-50 mt-4 px-2 rounded-lg  mx-auto flex flex-col  text-[20px] ">
-              <button
-                className="alegreya-normal border-b border-glowy-pink  p-2"
-                onClick={() => {
-
-                  navigate("/watchlist");
-                  setAppear(!appear);
-                }}
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, height: 0, translateY: -10 }}
+                animate={{ opacity: 1, height: "auto", translateY: 0 }}
+                exit={{ opacity: 0, height: 0, translateY: 10 }}
+                transition={{ duration: 0.3 }}
+                className="absolute bg-black z-50 mt-4 px-2 rounded-lg  mx-auto flex flex-col  text-[20px] "
               >
-                Watchlist
-              </button>
-              <button
-                className="alegreya-normal border-b border-glowy-pink  p-2"
-                onClick={() => {
-
-                  navigate("/favorites");
-                  setAppear(!appear);
-                }}
-              >
-                Favorites
-              </button>
-              <button
-                className="alegreya-normal border-b border-glowy-pink  p-2"
-                onClick={() => {
-
-                  navigate("/settings");
-                  setAppear(!appear);
-                }}
-              >
-                Settings
-              </button>
-              <button onClick={() => {
-                Cookies.remove('auth');
-                setAuth(null);
-              }} className="alegreya-normal  p-2">Log out</button>
-            </div>
+                <button
+                  className="alegreya-normal border-b border-glowy-pink  p-2"
+                  onClick={() => {
+                    navigate("/watchlist");
+                    setAppear(!appear);
+                  }}
+                >
+                  Watchlist
+                </button>
+                <button
+                  className="alegreya-normal border-b border-glowy-pink  p-2"
+                  onClick={() => {
+                    navigate("/favorites");
+                    setAppear(!appear);
+                  }}
+                >
+                  Favorites
+                </button>
+                <button
+                  className="alegreya-normal border-b border-glowy-pink  p-2"
+                  onClick={() => {
+                    navigate("/settings");
+                    setAppear(!appear);
+                  }}
+                >
+                  Settings
+                </button>
+                <button
+                  onClick={() => {
+                    Cookies.remove("auth");
+                    setAuth(null);
+                  }}
+                  className="alegreya-normal  p-2"
+                >
+                  Log out
+                </button>
+              </motion.div>
+            </AnimatePresence>
           )}
         </h1>
         <img

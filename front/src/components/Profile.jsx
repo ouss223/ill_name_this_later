@@ -1,12 +1,10 @@
 import react, { useEffect } from "react";
-import NavBar from "./NavBar";
 import { useState, useRef } from "react";
-import Switch from "@mui/material/Switch";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FieldChange from "./minicompo/FieldChange";
 import { useAvatar } from "../AvatarContext";
 import right_arrow from "../assets/right-arrow.png";
 import pen from "../assets/pen.png";
+import {motion} from "framer-motion";
 const Profile = ({ auth }) => {
   const urls = [
     "https://cdn2.iconfinder.com/data/icons/avatars-60/5985/8-Employee-512.png",
@@ -82,7 +80,7 @@ const Profile = ({ auth }) => {
   }, [restricted]);*/
 
   return (
-    <div className="flex flex-col text-white justify-center w-full items-center relative pb-40">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col text-white justify-center w-full items-center relative pb-40 h-screen">
       <div className="flex flex-col text-white justify-center w-full items-center space-y-2 mb-24">
         <div
           className="relative cursor-pointer"
@@ -135,7 +133,7 @@ const Profile = ({ auth }) => {
         <FieldChange fieldName={fieldName} setAppear={setAppear} auth={auth} />
       )}
 
-    </div>
+    </motion.div>
   );
 };
 export default Profile;

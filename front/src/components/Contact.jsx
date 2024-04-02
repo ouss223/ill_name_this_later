@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cinemaClap from "../assets/img/cinemaClap.png";
 import enveloppe1 from "../assets/img/enveloppe1.png";
-import { setIn } from "formik";
+import { motion } from "framer-motion";
 import { CircularProgress } from "@mui/material";
 function Contact() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Contact() {
     e.preventDefault();
 
     setShowError(false);
-    
+
     // Vérification des champs de formulaire
     if (!name.trim() || !email.trim() || !message.trim()) {
       setErrorMessage("Please fill in all required fields.");
@@ -25,44 +25,44 @@ function Contact() {
       return;
     }
     setCall(!call);
-
-
-    
   };
   useEffect(() => {
-      async function sendEmail() {
-        if (!name.trim() || !email.trim() || !message.trim())return;
-        try{
-            const response = await fetch("http://localhost:8000/api/sendMail.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message,
-                }),
-            });
-            if (!response.ok) {
-                console.log("error");
-                return;
-            }
-            const data = await response.json();
-            console.log(data);
-            navigate("/message/0");
-            
+    async function sendEmail() {
+      if (!name.trim() || !email.trim() || !message.trim()) return;
+      try {
+        const response = await fetch("http://localhost:8000/api/sendMail.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+          }),
+        });
+        if (!response.ok) {
+          console.log("error");
+          return;
         }
-        catch(e){
-            console.log(e);
-        }
+        const data = await response.json();
+        console.log(data);
+        navigate("/message/0");
+      } catch (e) {
+        console.log(e);
       }
-      sendEmail();
-  },[call]);
+    }
+    sendEmail();
+  }, [call]);
 
   return (
-    <div className="flex flex-col md:flex-row bg-black text-white min-h-screen ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-col md:flex-row bg-black text-white min-h-screen "
+    >
       {/* Partie gauche */}
       <div className="md:pt-40 pt-20 items-center md:w-1/2 ">
         <div className="text-center  ">
@@ -143,12 +143,16 @@ function Contact() {
               type="submit"
               className="alegreya-normal bg-indigo-950 text-white py-2 px-8 hover:bg-indigo-950 mt-4 self-end"
             >
-              { !call ?  'SUBMIT' : <CircularProgress size={20} color="inherit" />}
+              {!call ? (
+                "SUBMIT"
+              ) : (
+                <CircularProgress size={20} color="inherit" />
+              )}
             </button>
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -26,6 +26,9 @@ import { motion } from "framer-motion"; // Import motion from Framer Motion
 //handle the wait for stuff to load
 // tmdb api key = 43483510b31c8c74dd522ed9c8b18a28
 //omdb api key = 4a8e82cc
+
+
+
 function App() {
   const { avatarId, updateAvatarId } = useAvatar();
   const [auth, setAuth] = useState("");
@@ -47,6 +50,7 @@ function App() {
         const data = await response.json();
         updateAvatarId(data.avatar);
         setName(data.username);
+        setRole(data.role);
         console.log(data);
       } catch (e) {
         console.log(e);
@@ -108,6 +112,8 @@ function App() {
                 path="/blogposts"
                 element={<BlogPosts auth={auth} />}
               />
+              <Route exact path="/contact-us" element={<Contact />} />
+              <Route exact path="/message/:type" element={<Message  />} />
             </>
           ) : auth && role === "admin" ? (
             <>
@@ -121,6 +127,8 @@ function App() {
                 path="/blogposts"
                 element={<BlogPosts auth={auth} />}
               />
+              <Route exact path="/message/:type" element={<Message  />} />
+              
               <Route exact path="/*" element={<AdminTools />} />
             </>
           ) : (
@@ -140,7 +148,7 @@ function App() {
               />
               <Route exact path="*" element={<LandingPage />} />
               <Route exact path="/contact-us" element={<Contact />} />
-              <Route exact path="/message" element={<Message />} />
+              <Route exact path="/message/:type" element={<Message />} />
             </>
           )}
         </Routes>

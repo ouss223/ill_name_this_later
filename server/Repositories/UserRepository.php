@@ -11,6 +11,15 @@
         }
         return false;
     }
+    function usernameExists($username){
+        global $myDB;
+        $query = "SELECT * FROM users WHERE username = '$username'";
+        $result = $myDB->executeQuery($query);
+        if($result->num_rows > 0){
+            return true;
+        }
+        return false;
+    }
     function createUser($password,$username,$email)
     {
         global $myDB;
@@ -43,17 +52,36 @@
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
-    function changeField($user_id,$field_name,$field_value){
+    function changeField($user_id, $field_name, $field_value) {
         global $myDB;
-        if($field_name=="password"){
+        $response = array();
+    
+        if ($field_name == "password") {
             $field_value = password_hash($field_value, PASSWORD_DEFAULT);
         }
+    
+        if ($field_name == "email" && emailExists($field_value)) {
+            $response['success'] = false;
+            $response['message'] = "Email already exists";
+            return $response;
+        }
+    
         $query = "UPDATE users SET $field_name = ? WHERE id = ?";
         $stmt = $myDB->prepare($query);
         $stmt->bind_param("si", $field_value, $user_id);
         $stmt->execute();
-        return $stmt->affected_rows > 0;
+    
+        if ($stmt->affected_rows > 0) {
+            $response['success'] = true;
+            $response['message'] = "Field changed successfully";
+        } else {
+            $response['success'] = false;
+            $response['message'] = "An error occurred while changing field";
+        }
+    
+        return $response;
     }
+    
     /*function modifyRestriction($user_id,$state){
         global $myDB;
     $query = "SELECT restriction FROM users WHERE id = ?";

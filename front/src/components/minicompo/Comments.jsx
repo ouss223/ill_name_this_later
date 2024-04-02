@@ -81,12 +81,12 @@ const AddComment = ({ auth, id, setNotice, urls, episode, season }) => {
 
   return (
     <div className="border-b border-glowy-pink pb-10  max-w-[850px] w-10/12 mx-auto relative">
-      <h1 className="alegreya-bold text-glowy-pink text-[60px] "> Comments :</h1>
+      <h1 className="alegreya-bold text-glowy-pink text-[45px] "> Comments :</h1>
       <div className=" text-white flex flex-row mx-auto w-full gap-4 text-center my-10  ">
         <img src={urls[avatarId]} className="h-16" />
         <input
           type="text"
-          className="alegreya-normal p-1  w-full text-glowy-pink bg-black placeholder-pink-800 text-2xl"
+          className="alegreya-normal p-1  w-full text-glowy-pink bg-black placeholder-pink-800 text-[30px] "
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a Comment "
@@ -235,14 +235,14 @@ const CommentList = ({
                       <img src={urls[3]} className="h-16" alt="" />
                       <div>
                         {" "}
-                        <h1 className="alegreya-bold text-2xl font-semibold">
+                        <h1 className="alegreya-normal text-3xl font-semibold">
                           {comment.username}
                         </h1>
                         <h1 className="abel text-gray-500">{comment.timestamp}</h1>
                       </div>
                     </div>
 
-                    <h1 className="alegreya-bold mt-2 text-xl ">{comment.content}</h1>
+                    <h1 className="abel mt-2 text-[22px] ">{comment.content}</h1>
                     {comment.own && (
                       <div className="flex justify-end">
                         <EditIcon

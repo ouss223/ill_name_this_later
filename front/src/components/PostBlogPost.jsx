@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import image from "../assets/image.png";
-
+import { useNavigate } from "react-router-dom";
 const PostBlogPost = ({ auth }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [go, setGo] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -42,6 +43,7 @@ const PostBlogPost = ({ auth }) => {
         };
 
         reader.readAsDataURL(imageFile); // Read the image file as Data URL
+        navigate("/message/2");
       } catch (error) {
         console.error("Error:", error);
       }
@@ -58,7 +60,7 @@ const PostBlogPost = ({ auth }) => {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           type="text"
-          className="bg-black text-3xl text-glowy-pink placeholder:text-pink-600 border-b border-dark-pink"
+          className="bg-black text-4xl text-glowy-pink placeholder:text-pink-600 border-b border-dark-pink"
           style={{ resize: "none", outline: "none" }}
         />
         <textarea

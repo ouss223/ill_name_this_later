@@ -133,10 +133,10 @@ const Lists = ({ list_type, auth }) => {
   return (
     <div>
       <div className="bg-black h-full text-white lg:pl-24 pl-10 pb-12 ">
-        <div className="flex flex-col pt-14">
+        <div className="flex flex-col ">
           {!loading && Object.keys(showByGenre).length > 0 ? (
             <>
-              <h1 className="alegreya-bold text-4xl mb-5 font-extrabold ">{list_type}</h1>
+              <h1 className=" text-6xl mb-5 alegreya-bold ">{list_type}</h1>
               {Object.keys(showByGenre).map((genre) => (
                 <Genre key={genre} genre={genre} shows={showByGenre[genre]} />
               ))}

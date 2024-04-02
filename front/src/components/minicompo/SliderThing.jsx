@@ -96,17 +96,18 @@ const SliderThing = ({ shows }) => {
         )
         :(
             shows.map((show, index) => (
-                <div key={show.Title} className="flex flex-col cursor-pointer  " onClick={()=>
+                <div key={show.Title} className="flex relative flex-col cursor-pointer  group " onClick={()=>
                 {
                   navigate(`/watch/${show.Type}/${show.imdbID}`)
                 }}>
                 <img
                     src={show.Poster}
                     alt="show"
-                    className="w-[200px] h-[300px] rounded-md"
+                    className="w-[200px] h-[300px] rounded-md  hover:opacity-40"
                 />
-                <h1 className="abel text-white text-start w-[200px] text-lg font-bold ">
+                <h1 className="abel absolute text-white bottom-5 px-2 text-start w-[200px] text-lg font-bold  group-hover:visible invisible z-50">
                     {show.Title}
+                    <PlayCircleIcon style={{ color: 'orange' }} />
                 </h1>
                 </div>
             ))

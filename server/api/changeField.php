@@ -22,19 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "PATCH" && $_SERVER["REQUEST_URI"] == "/api/ch
     $field_name = sanitizeInput($body["field_name"]);
     $field_value = sanitizeInput($body["field_value"]);
     $user_id = verifyToken(tokenExtractor($auth));   
-    if($user_id !== false){
-        $result = changeField($user_id,$field_name,$field_value);
-        if(!$result){
+    if ($user_id !== false) {
+        $result = changeField($user_id, $field_name, $field_value);
+        if (!$result['success']) {
             http_response_code(500);
-            echo json_encode(array("error" => "An error occurred while changing field"));
+            echo json_encode(array("error" => $result['message']));
             exit;
+        } else {
+            echo json_encode(array("message" => $result['message']));
         }
-        else{
-            echo json_encode(array("message" => "Field changed successfully"));
-        }
-
-        
-    } else {
+    }else {
         http_response_code(401);
         echo json_encode(array("error" => "Invalid auth token"));
     }

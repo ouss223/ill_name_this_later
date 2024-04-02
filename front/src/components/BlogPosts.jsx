@@ -28,20 +28,20 @@ const BlogPosts = ({ auth }) => {
 
   return (
     <div className="text-white max-w-[1300px] mx-auto ">
-      <h1 className="text-5xl ml-12 mb-12">Blog Posts</h1>
+      <h1 className="text-6xl ml-12 mb-12 alegreya-bold">Blog Posts</h1>
       <div className="flex flex-col  mx-12 ">
         {
           posts &&
           posts.map((post) => (
             <div className="flex flex-row justify-between border-b border-dark-pink py-4">
               <div className="space-y-2 ">
-                <h1 className="alegreya-normal text-glowy-pink text-[50px] font-bold ">
+                <h1 className="alegreya-normal text-glowy-pink text-[38px]  ">
                   {post.title}
                 </h1>
-                <h3 className="abel text-gray-400 text-[30px]">
+                <h3 className="abel text-gray-400 text-[18px]">
                   {post.timestamp}
                 </h3>
-                <p className="abel text-[25px]">
+                <p className="abel text-[23px]">
                   {post.content}
                 </p>
               </div>

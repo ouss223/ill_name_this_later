@@ -22,10 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["REQUEST_URI"] == "/api/sig
     $password = $body["password"];
     $email = sanitizeInput($body["email"]);
     
-    if (emailExists($email)) {
-        echo "Email already exists";
+    if (emailExists($email) || usernameExists($username)) {
+        $message = emailExists($email) ? "Email already exists" : "Username already exists";
+        
+        echo json_encode(array("error" => $message));
+        http_response_code(500);
         return;
-    } else {
+    }
+   
+    else {
         $auth = createUser($password, $username, $email);
         if (isset($auth)) {
             echo json_encode(array("auth" =>"Bearer " . $auth,

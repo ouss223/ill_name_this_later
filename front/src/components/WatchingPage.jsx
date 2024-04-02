@@ -180,7 +180,7 @@ const WatchingPage = ({ auth }) => {
   return (
     <div className="mb-20 w-full max-w-[1100px] mx-auto  ">
       {info && (
-        <h1 className="alegreya-bold text-[60px] text-white  ml-10 mb-10 text-4xl text-glowy-pink">
+        <h1 className="alegreya-bold text-[45px] text-white  ml-10 mb-10 text-4xl text-glowy-pink">
           {info.Title}
         </h1>
       )}
@@ -197,9 +197,9 @@ const WatchingPage = ({ auth }) => {
             frameBorder="0"
             allowFullScreen
           ></iframe>
-          <div className="flex gap-2 text-gray-200 text-[14px]">
+          <div className="flex gap-2 text-gray-200 ">
             <div
-              className="abel text-[30px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              className="abel text-[20px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer flex items-center"
               onClick={() => {
                 if (lists[0]) {
                   setRemover((prev) => [true, prev[1]]);
@@ -220,7 +220,7 @@ const WatchingPage = ({ auth }) => {
               />
             </div>
             <div
-              className="abel text-[30px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer"
+              className="abel text-[20px] bg-gray-700 rounded-lg py-1 px-2 cursor-pointer flex items-center"
               onClick={() => {
                 if (lists[1]) {
                   setRemover((prev) => [prev[1], true]);
@@ -266,12 +266,12 @@ const WatchingPage = ({ auth }) => {
               <img src={down} alt="down" className="h-3" />
             </div>
 
-            <div className="overflow-y-auto font-semibold text-[17px]">
+            <div className="overflow-y-auto font-semibold text-[20px]">
               {currentSeason &&
                 currentSeason.Episodes.map((episode, index) => (
                   <div key={index} className="flex justify-between px-5 py-3">
                     <h1
-                      className="alegreya-normal cursor-pointer "
+                      className="alegreya-normal  cursor-pointer "
                       onClick={() => setPicked((prev) => [prev[0], index + 1])}
                     >
                       Episode {index + 1} : {episode.Title}

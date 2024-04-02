@@ -18,18 +18,18 @@ const LandingPage = () => {
   return (
     <div className="bg-white w-full p-0 m-0">
       <nav
-        class="alegreya-normal relative flex w-full flex-wrap items-center justify-between bg-gray-600 py-0 shadow-dark-mild  lg:py-2"
+        className="alegreya-normal relative flex w-full flex-wrap items-center justify-between bg-gray-600 py-0 shadow-dark-mild  lg:py-2"
         data-twe-navbar-ref
       >
-        <div class="flex w-full flex-wrap items-center justify-between px-3">
+        <div className="flex w-full flex-wrap items-center justify-between px-3">
           <div>
             <a
-              class="mx-2 mt-4 pl-[5em] flex items-center lg:mb-0 "
+              className="mx-2 mt-4 pl-[5em] flex items-center lg:mb-0 "
               href="#"
               onClick={() => navigate("/landing")}
             >
               <img
-                class="me-2"
+                className="me-2"
                 src={logo}
                 style={{ width: "200px" }}
                 alt="RAKCHA logo"
@@ -37,20 +37,20 @@ const LandingPage = () => {
             </a>
           </div>
           <div
-            class="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
+            className="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
             id="navbarSupportedContent4"
             data-twe-collapse-item
           >
             <ul
-              class="list-style-none me-auto flex flex-col ps-0 pl-[40px] lg:mt-1 lg:flex-row"
+              className="list-style-none me-auto flex flex-col ps-0 pl-[40px] lg:mt-1 lg:flex-row"
               data-twe-navbar-nav-ref
             >
               <li
-                class="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
+                className="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
                 data-twe-nav-item-ref
               >
                 <button
-                  class="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                  className="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
                   aria-current="page"
                   href="#"
                   data-twe-nav-link-ref
@@ -60,11 +60,11 @@ const LandingPage = () => {
                 </button>
               </li>
               <li
-                class="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
+                className="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
                 data-twe-nav-item-ref
               >
                 <button
-                  class="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                  className="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
                   aria-current="page"
                   data-twe-nav-link-ref
                   onClick={() => scrollToSection(WatchNow)}
@@ -73,11 +73,11 @@ const LandingPage = () => {
                 </button>
               </li>
               <li
-                class="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
+                className="mx-[20px] ps-2 lg:my-0 lg:pe-1 lg:ps-2"
                 data-twe-nav-item-ref
               >
                 <a
-                  class="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                  className="text-black transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
                   aria-current="page"
                   href="#"
                   onClick={() => navigate("/contact-us")}
@@ -88,25 +88,25 @@ const LandingPage = () => {
               </li>
             </ul>
 
-            <div class="flex items-center">
+            <div className="flex items-center">
               <a
                 href="#"
                 onClick={() => navigate("/signup")}
 
-                class="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
+                className="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
               >
-                <span class="absolute inset-0 w-full h-full bg-white border-1 border-indigo-950 group-hover:bg-indigo-950"></span>
-                <span class="relative text-black group-hover:text-white px-2">
+                <span className="absolute inset-0 w-full h-full bg-white border-1 border-indigo-950 group-hover:bg-indigo-950"></span>
+                <span className="relative text-black group-hover:text-white px-2">
                   SIGN UP
                 </span>
               </a>
               <a
                 href="#"
                 onClick={() => navigate("/login")}
-                class="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
+                className="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
               >
-                <span class="absolute inset-0 w-full h-full bg-indigo-950 border-2 border-white group-hover:bg-black"></span>
-                <span class="relative text-white group-hover:text-white px-2">
+                <span className="absolute inset-0 w-full h-full bg-indigo-950 border-2 border-white group-hover:bg-black"></span>
+                <span className="relative text-white group-hover:text-white px-2">
                   LOG IN
                 </span>
               </a>
@@ -133,29 +133,29 @@ const LandingPage = () => {
                 </h3>
               </div>
               <div className="w-2/5 ">
-                <div class="container mx-auto flex flex-col text-[20px]  text-white ">
-                  <h3 class="abel text-left mt-8 mb-8">
+                <div className="container mx-auto flex flex-col text-[20px]  text-white ">
+                  <h3 className="abel text-left mt-8 mb-8">
                     <big>E</big>xperience the best in movies, sign up or login
                     to start
                   </h3>
-                  <div class="alegreya-normal flex justify-left">
+                  <div className="alegreya-normal flex justify-left">
                     <a
                       href="#"
                       onClick={() => navigate("/login")}
-                      class="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
+                      className="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
                     >
-                      <span class="absolute inset-0 w-full h-full bg-indigo-950 border-2 border-white group-hover:bg-black"></span>
-                      <span class="relative text-white group-hover:text-white px-2">
+                      <span className="absolute inset-0 w-full h-full bg-indigo-950 border-2 border-white group-hover:bg-black"></span>
+                      <span className="relative text-white group-hover:text-white px-2">
                         LOG IN
                       </span>
                     </a>
                     <a
                       href="#"
                       onClick={() => navigate("/signup")}
-                      class="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
+                      className="relative inline-block pl-8 pr-8 m-4 px-4 py-2 font-medium group"
                     >
-                      <span class="absolute inset-0 w-full h-full bg-white border-1 border-indigo-950 group-hover:bg-indigo-950"></span>
-                      <span class="relative text-black group-hover:text-white px-2">
+                      <span className="absolute inset-0 w-full h-full bg-white border-1 border-indigo-950 group-hover:bg-indigo-950"></span>
+                      <span className="relative text-black group-hover:text-white px-2">
                         SIGN UP
                       </span>
                     </a>
@@ -264,9 +264,9 @@ const LandingPage = () => {
           </div>
         </figcaption>
       </figure>
-      <div class="container mx-auto py-10 mb-10">
+      <div className="container mx-auto py-10 mb-10">
         <div className="flex justify-center my-8">
-          <img src={logo} alt="logo" class="" />
+          <img src={logo} alt="logo" className="" />
         </div>
         <div className="alegreya-normal flex justify-center my-8 text-[50px] ">
           <h1>
@@ -287,7 +287,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div class="container my-10 mx-auto">
+      <div className="container my-10 mx-auto">
         <div className="pl-8">
           <h1 className="alegreya-bold text-[50px] uppercase">FAQ</h1>
           <h1 className="abel text-[25px] py-8 ">
@@ -297,7 +297,7 @@ const LandingPage = () => {
           </h1>
         </div>
 
-        <hr class="border-2 border-purple-800 " />
+        <hr className="border-2 border-purple-800 " />
 
         <div className="pl-8">
           <h1 className="alegreya-normal text-[50px] uppercase">
@@ -309,7 +309,7 @@ const LandingPage = () => {
             </a>
           </h1>
         </div>
-        <hr class="border-2 border-purple-800 " />
+        <hr className="border-2 border-purple-800 " />
         <div className="pl-8">
           <h1 className="alegreya-normal text-[50px] uppercase">
             What content is available ?
@@ -320,7 +320,7 @@ const LandingPage = () => {
             </a>
           </h1>
         </div>
-        <hr class="border-2 border-purple-800 " />
+        <hr className="border-2 border-purple-800 " />
         <div className="pl-8">
           <h1 className="alegreya-normal text-[50px] uppercase">
             Is it supported by all devices ?
@@ -347,7 +347,7 @@ const LandingPage = () => {
           </a>
         </div>
       </div>
-      <div class="w-full bg-black">
+      <div className="w-full bg-black">
         <div className="abel w-full flex">
           <div className="flex-1 ">
             <img
@@ -356,13 +356,13 @@ const LandingPage = () => {
               className="ml-10 mt-0 p-0 h-[300px]"
             />
           </div>
-          <div class="flex-1 text-white m-auto px-8 text-[25px]">
+          <div className="flex-1 text-white m-auto px-8 text-[25px]">
             <h1 className="m-4">Adress:</h1>
             <p className="px-4">Tunis, Centre urbain nord, 1082</p>
             <h1 className="m-4">Contact:</h1>
             <p className="px-4  "> +216 12 345 678 </p>
           </div>
-          <div class="flex-1 text-white m-auto px-8 text-[25px]">
+          <div className="flex-1 text-white m-auto px-8 text-[25px]">
             <h1 className="m-4 hover:underline">
               <button href="#" onClick={() => navigate("/login")}>LOGIN</button>
             </h1>

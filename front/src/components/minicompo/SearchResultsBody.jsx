@@ -96,8 +96,8 @@ const SearchResultsBody = () => {
         }}
       />
       <div className="flex flex-col">
-        <h1 className="text-[15px] text-white">{show.Title}</h1>
-        <p className="text-[15px] text-gray-500">{show.Year}</p>
+        <h1 className="text-[20px] abel text-white">{show.Title}</h1>
+        <p className="text-[17px] text-gray-500">{show.Year}</p>
       </div>
     </div>
   ))

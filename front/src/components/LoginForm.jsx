@@ -16,6 +16,7 @@ const LoginForm = ({ setAuth, setRole }) => {
   const navigate = useNavigate();
   const [call, setCall] = useState(false);
   const [infos, setInfos] = useState();
+  const [error, setError] = useState(null);
   const handleSubmit = (values, { setSubmitting }) => {
     // Submit your form data here, e.g., send a request to your backend
     console.log(values);
@@ -45,6 +46,7 @@ const LoginForm = ({ setAuth, setRole }) => {
         );
         if (!response.ok) {
           console.log("error");
+          setError("Invalid email or password");
           return;
         }
         const data = await response.json();
@@ -93,6 +95,9 @@ const LoginForm = ({ setAuth, setRole }) => {
                 component="div"
                 className="text-red-500"
               />
+              {
+                error && <div className="text-red-500">Invalid email or password</div>
+              }
             </div>
             <button
               type="submit"

@@ -30,23 +30,23 @@ const NavBar = ({ child, username, setAuth }) => {
           className="w-[150px] h-[50px] cursor-pointer"
           onClick={() => navigate("/")}
         />
-        <button className="alegreya-normal text-[30px] " >Movies</button>
-        <button className="alegreya-normal text-[30px] ">Series</button>
+        <button className="alegreya-normal text-[22px] " >Movies</button>
+        <button className="alegreya-normal text-[22px] ">Series</button>
         <button
           onClick={
             () => navigate("/blogposts")
           }
-          className="alegreya-normal text-[30px]"
+          className="alegreya-normal text-[22px]"
         >Blog</button>
         {child}
       </div>
       <div className="w-1/6 flex justify-end items-center space-x-4  ">
-        <h1 className="alegreya-normal text-[30px] border-l border-dark-pink pl-3 text-white ">
+        <h1 className="alegreya-normal text-[22px] border-l border-dark-pink pl-3 text-white ">
           {username}
           {appear && (
-            <div className="absolute bg-black z-50 mt-4  rounded-lg px-2  mx-auto flex flex-col  ">
+            <div className="absolute bg-black z-50 mt-4 px-2 rounded-lg  mx-auto flex flex-col  text-[20px] ">
               <button
-                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
+                className="alegreya-normal border-b border-glowy-pink  p-2"
                 onClick={() => {
 
                   navigate("/watchlist");
@@ -56,7 +56,7 @@ const NavBar = ({ child, username, setAuth }) => {
                 Watchlist
               </button>
               <button
-                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
+                className="alegreya-normal border-b border-glowy-pink  p-2"
                 onClick={() => {
 
                   navigate("/favorites");
@@ -66,7 +66,7 @@ const NavBar = ({ child, username, setAuth }) => {
                 Favorites
               </button>
               <button
-                className="alegreya-normal border-b border-glowy-pink text-[50px] p-2"
+                className="alegreya-normal border-b border-glowy-pink  p-2"
                 onClick={() => {
 
                   navigate("/settings");
@@ -78,7 +78,7 @@ const NavBar = ({ child, username, setAuth }) => {
               <button onClick={() => {
                 Cookies.remove('auth');
                 setAuth(null);
-              }} className="alegreya-normal text-[50px] p-2">Log out</button>
+              }} className="alegreya-normal  p-2">Log out</button>
             </div>
           )}
         </h1>

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 const validationSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
+    username: Yup.string().required('Username is required').max(8, 'Username must be at most 8 characters long'),
     email: Yup.string().email('Invalid email').required('Email is required').matches(
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         'Invalid email format'
@@ -24,6 +24,7 @@ const SignupForm = ({ setAuth }) => {
         setCall(!call);
         setSubmitting(false);
     };
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function signUp() {
@@ -46,11 +47,14 @@ const SignupForm = ({ setAuth }) => {
                     }
                 );
                 if (!response.ok) {
-                    console.log("error");
+                    const responseData = await response.json();
+                    setError(responseData.error);
+
                     return;
                 }
                 const data = await response.json();
                 setAuth(data.auth);
+                navigate("/message/1");
             } catch (e) {
                 console.log(e);
             }
@@ -98,12 +102,14 @@ const SignupForm = ({ setAuth }) => {
                             className="text-xl peer h-[70px] text-[#FB2576] placeholder-[#FB2576] w-full border-b border-[#FB2576] bg-transparent pt-4 pb-1.5 font-sans  font-normal outline outline-0 transition-all focus:border-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                         />
                         <ErrorMessage name="confirmPassword" component="div" className="text-red-500" />
+                        {error && <div className="text-red-500 mt-8 ">{error}</div> }
 
                         <button
-                            type="submit"
+                            type="submit" 
                             disabled={isSubmitting}
                             className="relative inline-block pl-8 pr-8 my-8 px-4 py-2 font-medium group left-1/2 transform -translate-x-1/2"
                         >
+                            
                             <span className="absolute inset-0 w-full h-full bg-[#FB2576] border-2 border-white group-hover:bg-black"></span>
                             <span className="relative text-white group-hover:text-white px-2">SIGN UP</span>
                         </button>

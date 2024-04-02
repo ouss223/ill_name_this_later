@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cinemaClap from "../assets/img/cinemaClap.png";
 import enveloppe1 from "../assets/img/enveloppe1.png";
-
+import { setIn } from "formik";
+import { CircularProgress } from "@mui/material";
 function Contact() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -11,32 +12,65 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
-
+  const [call, setCall] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setShowError(false);
-
+    
     // Vérification des champs de formulaire
     if (!name.trim() || !email.trim() || !message.trim()) {
       setErrorMessage("Please fill in all required fields.");
       setShowError(true);
       return;
     }
+    setCall(!call);
 
-    navigate("/message");
+
+    
   };
+  useEffect(() => {
+      async function sendEmail() {
+        if (!name.trim() || !email.trim() || !message.trim())return;
+        try{
+            const response = await fetch("http://localhost:8000/api/sendMail.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message,
+                }),
+            });
+            if (!response.ok) {
+                console.log("error");
+                return;
+            }
+            const data = await response.json();
+            console.log(data);
+            navigate("/message/0");
+            
+        }
+        catch(e){
+            console.log(e);
+        }
+      }
+      sendEmail();
+  },[call]);
 
   return (
     <div className="flex flex-col md:flex-row bg-black text-white min-h-screen ">
       {/* Partie gauche */}
-      <div className="md:pt-40 pt-20 items-center md:w-1/2">
+      <div className="md:pt-40 pt-20 items-center md:w-1/2 ">
         <div className="text-center  ">
           <button onClick={() => navigate("/")}>
             <img
               src={cinemaClap}
               alt="Clap Cinema"
-              className="w-16 h-auto cursor-pointer"
+              className="sm:w-16 w-auto sm:h-auto cursor-pointer h-10 "
             />
           </button>
           <button onClick={() => navigate("/")}>
@@ -56,14 +90,17 @@ function Contact() {
               el forja lila ba7thena!
             </h6>
           </button>
-          <h2 className="alegreya-normal text-[50px] mb-5" style={{ fontWeight: 400 }}>
+          <h2
+            className="alegreya-normal text-[40px] mb-5"
+            style={{ fontWeight: 400 }}
+          >
             <big>C</big>ONTACT US NOW!
           </h2>
         </div>
         <img
           src={enveloppe1}
           alt="designpage"
-          className=" mx-auto  object-cover w-3/4 hidden md:block"
+          className=" mx-auto  object-cover w-3/4 hidden md:block "
         />
       </div>
       <br />
@@ -106,7 +143,7 @@ function Contact() {
               type="submit"
               className="alegreya-normal bg-indigo-950 text-white py-2 px-8 hover:bg-indigo-950 mt-4 self-end"
             >
-              SUBMIT
+              { !call ?  'SUBMIT' : <CircularProgress size={20} color="inherit" />}
             </button>
           </form>
         </div>

@@ -1,6 +1,11 @@
 <?php
 
     include_once '../models/db.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    require '../vendor/autoload.php';
+
     global $myDB;
     function sanitizeInput($input) {
         //confused cause it screws with some data
@@ -175,7 +180,7 @@ function getComments($show_id, $user_id, $episode, $season)
     }
     function uploadImage($imageBase64)
 {
-    $targetDir = "/Users/ous223/Documents/projet sellaouti/ill_name_this_later/front/public/storage/";
+    $targetDir = "/Users/ous223/Documents/GitHub/ill_name_this_later/front/public/storage/";
 
     $imageData = base64_decode($imageBase64);
 
@@ -187,6 +192,36 @@ function getComments($show_id, $user_id, $episode, $season)
         $relativePath = '/storage/' . $uniqueFilename;
         return $relativePath;
     } else {
+        return false;
+    }
+}
+function sendMail($name, $email, $subject, $message) {
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings for Google's SMTP server
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'ousema586k@gmail.com'; // Your Gmail or Google Workspace email address
+        $mail->Password   ="nldhjcmffbcwzzrc";       // Your Gmail or Google Workspace password
+        $mail->SMTPSecure = "ssl"; // Enable TLS encryption
+        $mail->Port       = 465; // TCP port to connect to (587 for TLS)
+
+        // Sender
+        $mail->setFrom($email, $name);
+
+        // Recipient (send the email to you, the developer)
+        $mail->addAddress('ousema586k@gmail.com');
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = "from " . $email . " : \n" . $message;
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
         return false;
     }
 }
